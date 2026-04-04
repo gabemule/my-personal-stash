@@ -1,0 +1,24 @@
+{
+  "id": "2026-04-04_01-28_zPi5",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-04T04:28:51.932Z",
+  "message": "planning notes",
+  "tags": [],
+  "branch": "development",
+  "commit": "cfc4ce5c302f85f7c1c41cc030cd710ce32bef9f",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "README.md",
+      "size": 4682,
+      "hash": "sha256:617e236054d5"
+    },
+    {
+      "name": "SPEC.md",
+      "size": 21525,
+      "hash": "sha256:3df4544f0ab1"
+    }
+  ],
+  "totalSize": 26207,
+  "compressed": true
+}
