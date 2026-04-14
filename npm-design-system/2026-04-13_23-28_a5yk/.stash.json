@@ -1,0 +1,69 @@
+{
+  "id": "2026-04-13_23-28_a5yk",
+  "project": "npm-design-system",
+  "timestamp": "2026-04-14T02:28:31.626Z",
+  "message": "akads claude skill and guidelines",
+  "tags": [],
+  "branch": "feat/improving-export-types",
+  "commit": "6ea1444ff4e3a43223ca0280b153d6ecb7725fc6",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "ai/CLAUDE.md",
+      "size": 149,
+      "hash": "sha256:e25b6cc5012b"
+    },
+    {
+      "name": "ai/figma-export.json",
+      "size": 250596,
+      "hash": "sha256:fcbe14c740a1"
+    },
+    {
+      "name": "ai/README.md",
+      "size": 12135,
+      "hash": "sha256:f935a433dda6"
+    },
+    {
+      "name": "ai/UPDATE.md",
+      "size": 8238,
+      "hash": "sha256:ab6cb5f037ab"
+    },
+    {
+      "name": "ai/figma-plugin/code.js",
+      "size": 4604,
+      "hash": "sha256:0363a72aba11"
+    },
+    {
+      "name": "ai/figma-plugin/manifest.json",
+      "size": 137,
+      "hash": "sha256:2a5091f3aeb7"
+    },
+    {
+      "name": "ai/figma-plugin/ui.html",
+      "size": 3595,
+      "hash": "sha256:c7320cda93fd"
+    },
+    {
+      "name": "ai/guidelines/ds-react.md",
+      "size": 27947,
+      "hash": "sha256:4fff981cae3c"
+    },
+    {
+      "name": "ai/guidelines/ds-sass.md",
+      "size": 9366,
+      "hash": "sha256:8193d00a8bfb"
+    },
+    {
+      "name": "ai/guidelines/ds-theme.md",
+      "size": 5313,
+      "hash": "sha256:2f43c9c25d1f"
+    },
+    {
+      "name": "ai/guidelines/ds-tokens.md",
+      "size": 5374,
+      "hash": "sha256:9b9ebcd540b8"
+    }
+  ],
+  "totalSize": 327454,
+  "compressed": false
+}
