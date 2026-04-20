@@ -1,0 +1,69 @@
+{
+  "id": "2026-04-20_12-57_RPNk",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-20T15:57:39.781Z",
+  "message": "updated RUNTIME and AUTHZ todo docs",
+  "tags": [],
+  "branch": "feat/runtime-improvements",
+  "commit": "7ace0c68adf5a0c142edea1bcc6055686d7f1c62",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/AUTHZ_API_KEYS.md",
+      "size": 15766,
+      "hash": "sha256:fb432a9424fe"
+    },
+    {
+      "name": "@todo/AUTHZ_AUDIT_LOG.md",
+      "size": 7979,
+      "hash": "sha256:38904f0683ec"
+    },
+    {
+      "name": "@todo/AUTHZ_INVITES.md",
+      "size": 18647,
+      "hash": "sha256:34a2784a4e00"
+    },
+    {
+      "name": "@todo/AUTHZ_PLAN.md",
+      "size": 11554,
+      "hash": "sha256:54619f85dba6"
+    },
+    {
+      "name": "@todo/AUTHZ_PROGRESS.md",
+      "size": 22219,
+      "hash": "sha256:93d7381c74c9"
+    },
+    {
+      "name": "@todo/AUTHZ_RBAC_UI.md",
+      "size": 28749,
+      "hash": "sha256:28c585044c39"
+    },
+    {
+      "name": "@todo/AUTHZ_TENANT.md",
+      "size": 43774,
+      "hash": "sha256:71a5f67327e2"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_APP.md",
+      "size": 32355,
+      "hash": "sha256:4607487fc865"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PLAN.md",
+      "size": 59787,
+      "hash": "sha256:7ae33bf832e6"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PROGRESS.md",
+      "size": 15932,
+      "hash": "sha256:9c0975de2e93"
+    },
+    {
+      "name": "@todo/TODO.md",
+      "size": 189,
+      "hash": "sha256:b2bd359f5ba6"
+    }
+  ],
+  "totalSize": 256951,
+  "compressed": false
+}
