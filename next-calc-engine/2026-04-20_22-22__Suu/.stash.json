@@ -1,0 +1,64 @@
+{
+  "id": "2026-04-20_22-22__Suu",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-21T01:22:38.765Z",
+  "message": "RUNTIME (branching and performance)  & AUTHZ docs",
+  "tags": [],
+  "branch": "feat/runtime-improvements",
+  "commit": "b677d20380fb0f09e11a43330b997f789ff14a6d",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/AUTHZ_API_KEYS.md",
+      "size": 15766,
+      "hash": "sha256:fb432a9424fe"
+    },
+    {
+      "name": "@todo/AUTHZ_AUDIT_LOG.md",
+      "size": 7979,
+      "hash": "sha256:38904f0683ec"
+    },
+    {
+      "name": "@todo/AUTHZ_INVITES.md",
+      "size": 18647,
+      "hash": "sha256:34a2784a4e00"
+    },
+    {
+      "name": "@todo/AUTHZ_PLAN.md",
+      "size": 11554,
+      "hash": "sha256:54619f85dba6"
+    },
+    {
+      "name": "@todo/AUTHZ_PROGRESS.md",
+      "size": 22219,
+      "hash": "sha256:93d7381c74c9"
+    },
+    {
+      "name": "@todo/AUTHZ_RBAC_UI.md",
+      "size": 28749,
+      "hash": "sha256:28c585044c39"
+    },
+    {
+      "name": "@todo/AUTHZ_TENANT.md",
+      "size": 43774,
+      "hash": "sha256:71a5f67327e2"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
+      "size": 37497,
+      "hash": "sha256:cad4fdee6f78"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
+      "size": 56700,
+      "hash": "sha256:bd5e4984a272"
+    },
+    {
+      "name": "@todo/TODO.md",
+      "size": 189,
+      "hash": "sha256:b2bd359f5ba6"
+    }
+  ],
+  "totalSize": 243074,
+  "compressed": false
+}
