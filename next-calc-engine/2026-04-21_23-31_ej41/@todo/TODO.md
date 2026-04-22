@@ -1,1 +1,0 @@
-- tem uma caralhada de loading.tsx, precisamos ter um componente reutilizavel compartilhado
