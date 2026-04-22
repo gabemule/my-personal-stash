@@ -1,0 +1,69 @@
+{
+  "id": "2026-04-21_23-31_ej41",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-22T02:31:18.437Z",
+  "message": "Authz, Sanitization & Runtime Refactor",
+  "tags": [],
+  "branch": "feat/runtime-improvements",
+  "commit": "ba7c1b77e9bf083022d68f787afe744a8716a8a0",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/AUTHZ_API_KEYS.md",
+      "size": 18613,
+      "hash": "sha256:cfb1450daade"
+    },
+    {
+      "name": "@todo/AUTHZ_AUDIT_LOG.md",
+      "size": 7979,
+      "hash": "sha256:38904f0683ec"
+    },
+    {
+      "name": "@todo/AUTHZ_INVITES.md",
+      "size": 18647,
+      "hash": "sha256:34a2784a4e00"
+    },
+    {
+      "name": "@todo/AUTHZ_PLAN.md",
+      "size": 11554,
+      "hash": "sha256:54619f85dba6"
+    },
+    {
+      "name": "@todo/AUTHZ_PROGRESS.md",
+      "size": 22219,
+      "hash": "sha256:93d7381c74c9"
+    },
+    {
+      "name": "@todo/AUTHZ_RBAC_UI.md",
+      "size": 28749,
+      "hash": "sha256:28c585044c39"
+    },
+    {
+      "name": "@todo/AUTHZ_TENANT.md",
+      "size": 43774,
+      "hash": "sha256:71a5f67327e2"
+    },
+    {
+      "name": "@todo/NAME_SANITIZATION.md",
+      "size": 16899,
+      "hash": "sha256:ca7c05af2b2a"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
+      "size": 39314,
+      "hash": "sha256:3dc705bb5af7"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
+      "size": 56696,
+      "hash": "sha256:1f1d02232db5"
+    },
+    {
+      "name": "@todo/TODO.md",
+      "size": 92,
+      "hash": "sha256:7f56ab58dd54"
+    }
+  ],
+  "totalSize": 264536,
+  "compressed": false
+}
