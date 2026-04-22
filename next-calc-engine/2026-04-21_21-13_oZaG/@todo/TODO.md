@@ -1,0 +1,2 @@
+- tem uma caralhada de loading.tsx, precisamos ter um componente reutilizavel compartilhado
+- melhorar jsdocs do projeto inteiro, nao sei o que eh o FetchInterceptor por ex, pra que serve?
