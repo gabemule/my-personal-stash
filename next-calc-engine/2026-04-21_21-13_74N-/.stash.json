@@ -1,0 +1,19 @@
+{
+  "id": "2026-04-21_21-13_74N-",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-22T00:13:27.646Z",
+  "message": "name sanitization",
+  "tags": [],
+  "branch": "feat/runtime-improvements",
+  "commit": "914d16d2c78ab5dda4251615f08efaded2a79d03",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/NAME_SANITIZATION.md",
+      "size": 16899,
+      "hash": "sha256:ca7c05af2b2a"
+    }
+  ],
+  "totalSize": 16899,
+  "compressed": false
+}
