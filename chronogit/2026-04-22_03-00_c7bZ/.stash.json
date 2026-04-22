@@ -1,0 +1,32 @@
+{
+  "id": "2026-04-22_03-00_c7bZ",
+  "project": "chronogit",
+  "timestamp": "2026-04-22T06:00:28.257Z",
+  "message": "chronogit plans",
+  "tags": [],
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "FUTURE.md",
+      "size": 5593,
+      "hash": "sha256:066f3a84f883"
+    },
+    {
+      "name": "MASTER_PLAN.md",
+      "size": 33040,
+      "hash": "sha256:6d038b69adb3"
+    },
+    {
+      "name": "PLAN.md",
+      "size": 24861,
+      "hash": "sha256:bb0f1e064a5f"
+    },
+    {
+      "name": "SPECS.md",
+      "size": 46407,
+      "hash": "sha256:7ecf0099811e"
+    }
+  ],
+  "totalSize": 109901,
+  "compressed": false
+}
