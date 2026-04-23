@@ -1,0 +1,69 @@
+{
+  "id": "2026-04-23_14-26_c1Hp",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-23T17:26:05.130Z",
+  "message": "@todo docs",
+  "tags": [],
+  "branch": "feat/runtime-improvements",
+  "commit": "f2928af358fd2ebd2257f1413c34c2f2897f9902",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/APP_BUILDER_REORGANIZING.md",
+      "size": 23070,
+      "hash": "sha256:ec03c580c632"
+    },
+    {
+      "name": "@todo/AUTHZ_API_KEYS.md",
+      "size": 12170,
+      "hash": "sha256:cc34f88dcda3"
+    },
+    {
+      "name": "@todo/AUTHZ_AUDIT_LOG.md",
+      "size": 6979,
+      "hash": "sha256:32c2b49a9d94"
+    },
+    {
+      "name": "@todo/AUTHZ_INVITES.md",
+      "size": 12937,
+      "hash": "sha256:a00f0f6d904e"
+    },
+    {
+      "name": "@todo/AUTHZ_PLAN.md",
+      "size": 8659,
+      "hash": "sha256:19fee46633f9"
+    },
+    {
+      "name": "@todo/AUTHZ_PROGRESS.md",
+      "size": 12538,
+      "hash": "sha256:43de744b29e8"
+    },
+    {
+      "name": "@todo/AUTHZ_RBAC_UI.md",
+      "size": 19388,
+      "hash": "sha256:a4078b3c6abe"
+    },
+    {
+      "name": "@todo/AUTHZ_TENANT.md",
+      "size": 27695,
+      "hash": "sha256:12e13341656a"
+    },
+    {
+      "name": "@todo/NAME_SANITIZATION.md",
+      "size": 16899,
+      "hash": "sha256:ca7c05af2b2a"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
+      "size": 39314,
+      "hash": "sha256:3dc705bb5af7"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
+      "size": 56696,
+      "hash": "sha256:1f1d02232db5"
+    }
+  ],
+  "totalSize": 236345,
+  "compressed": false
+}
