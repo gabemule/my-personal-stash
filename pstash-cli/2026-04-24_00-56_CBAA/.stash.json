@@ -1,0 +1,124 @@
+{
+  "id": "2026-04-24_00-56_CBAA",
+  "project": "pstash-cli",
+  "timestamp": "2026-04-24T03:56:04.562Z",
+  "message": "testing",
+  "tags": [],
+  "branch": "master",
+  "commit": "abaf390f463f064645e128bca7428d9d0e1bf79a",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "README.md",
+      "size": 24173,
+      "hash": "sha256:25f755add5b6"
+    },
+    {
+      "name": "src/cli.ts",
+      "size": 16337,
+      "hash": "sha256:d8fcaea4cc93"
+    },
+    {
+      "name": "src/commands/clean.ts",
+      "size": 7478,
+      "hash": "sha256:0a14da94f580"
+    },
+    {
+      "name": "src/commands/config.ts",
+      "size": 7359,
+      "hash": "sha256:c937cd20d56e"
+    },
+    {
+      "name": "src/commands/diff.ts",
+      "size": 13001,
+      "hash": "sha256:419bc7350f48"
+    },
+    {
+      "name": "src/commands/show.ts",
+      "size": 5118,
+      "hash": "sha256:a6757f727926"
+    },
+    {
+      "name": "src/commands/status.ts",
+      "size": 6026,
+      "hash": "sha256:ac0d31199d52"
+    },
+    {
+      "name": "src/core/indexer.ts",
+      "size": 3862,
+      "hash": "sha256:26edc9a3b760"
+    },
+    {
+      "name": "src/core/stasher.ts",
+      "size": 17419,
+      "hash": "sha256:ead473526823"
+    },
+    {
+      "name": "src/schemas.ts",
+      "size": 12730,
+      "hash": "sha256:93b280b9d4d5"
+    },
+    {
+      "name": "src/utils/format.ts",
+      "size": 2425,
+      "hash": "sha256:e06df1886619"
+    },
+    {
+      "name": "tests/commands/drop.test.ts",
+      "size": 8894,
+      "hash": "sha256:14968a874507"
+    },
+    {
+      "name": "tests/commands/pop.test.ts",
+      "size": 8094,
+      "hash": "sha256:9dff526e6842"
+    },
+    {
+      "name": "tests/commands/save.test.ts",
+      "size": 12453,
+      "hash": "sha256:c9c685fc2008"
+    },
+    {
+      "name": "tests/config/loader.test.ts",
+      "size": 8044,
+      "hash": "sha256:8e46d3e426dd"
+    },
+    {
+      "name": "tests/core/detector.test.ts",
+      "size": 10091,
+      "hash": "sha256:f9727550ccbf"
+    },
+    {
+      "name": "tests/core/git.test.ts",
+      "size": 10113,
+      "hash": "sha256:100ab7c674f2"
+    },
+    {
+      "name": "tests/core/stasher.test.ts",
+      "size": 12999,
+      "hash": "sha256:9275206e2843"
+    },
+    {
+      "name": "tests/utils/validation.test.ts",
+      "size": 4839,
+      "hash": "sha256:fa9ae4433cda"
+    },
+    {
+      "name": "vitest.config.ts",
+      "size": 478,
+      "hash": "sha256:ac6a1b0cfcaf"
+    },
+    {
+      "name": "src/commands/update.ts",
+      "size": 7442,
+      "hash": "sha256:b641fab34f79"
+    },
+    {
+      "name": "tests/commands/update.test.ts",
+      "size": 12426,
+      "hash": "sha256:25df879796c9"
+    }
+  ],
+  "totalSize": 211801,
+  "compressed": false
+}
