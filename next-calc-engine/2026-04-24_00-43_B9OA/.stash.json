@@ -2,7 +2,7 @@
   "id": "2026-04-24_00-43_B9OA",
   "project": "next-calc-engine",
   "timestamp": "2026-04-24T03:43:48.360Z",
-  "updatedAt": "2026-04-24T07:04:38.657Z",
+  "updatedAt": "2026-04-24T07:44:07.899Z",
   "message": "@todo docs",
   "tags": [],
   "branch": "feat/authz_reinforcement",
@@ -33,6 +33,11 @@
       "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
       "size": 56696,
       "hash": "sha256:1f1d02232db5"
+    },
+    {
+      "name": "@todo/SERVICES_LAYER.md",
+      "size": 9733,
+      "hash": "sha256:78e70dd58be1"
     },
     {
       "name": "@todo/AUTHZ_COMPLETE/AUTHZ_API_KEYS.md",
@@ -105,6 +110,6 @@
       "hash": "sha256:c9de27525533"
     }
   ],
-  "totalSize": 294347,
+  "totalSize": 304080,
   "compressed": false
 }
