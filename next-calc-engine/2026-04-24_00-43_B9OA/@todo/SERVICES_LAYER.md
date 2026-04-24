@@ -36,6 +36,7 @@ to use (cookie-based via `createSupabaseClient()` or service-role via
 services/
 ├── engines.ts      # Engine CRUD + fetch by ID
 ├── projects.ts     # Project CRUD + activation
+├── calc.ts         # Contract functions + calc orchestration (migrated from core/contract.ts)
 ├── api-keys.ts     # API key CRUD (uses service-role client)
 └── auth.ts         # Login/logout (if needed beyond current resolveAuth)
 ```
@@ -245,6 +246,135 @@ export async function activateProject(db: SupabaseClient, id: string): Promise<v
 }
 ```
 
+### `services/calc.ts`
+
+Migrated from `core/contract.ts`. Contains the public contract functions
+(name ↔ id translation, input schema, output projection) plus a convenience
+orchestrator for executing calculations.
+
+> **Why here instead of `core/`?** These functions are consumed exclusively by
+> API routes (`/api/calc`, `/api/schemas`) — zero builder UI usage. They belong
+> to the API/services layer, not the builder toolkit.
+
+```ts
+import type { z } from 'zod'
+import type { EngineState, ExecuteResult } from '@/lib/runtime'
+import { execute } from '@/lib/runtime'
+import type {
+  InputSchemaSchema,
+  InputSchemaPropertySchema,
+  OutputContractSchema,
+} from '@/schemas/api'
+
+// Zod schema is SSOT — derive the types, never duplicate manually
+export type InputSchema = z.infer<typeof InputSchemaSchema>
+export type InputSchemaProperty = z.infer<typeof InputSchemaPropertySchema>
+export type OutputContract = z.infer<typeof OutputContractSchema>
+
+// --- Contract functions (pure, no DB) ---
+
+/**
+ * Builds a JSON Schema describing the engine input variables.
+ * Only `kind === "input"` variables are included.
+ */
+export function buildInputSchema(
+  engine: EngineState,
+  options: { keyBy: 'name' | 'id' }
+): InputSchema {
+  const { keyBy } = options
+  const inputs = engine.variables.filter((v) => {
+    if ((v.kind ?? 'input') !== 'input') return false
+    if (keyBy === 'name' && !v.name) return false
+    return true
+  })
+
+  const properties = Object.fromEntries(
+    inputs.map((v) => {
+      const property: InputSchemaProperty = {
+        type: 'string',
+        default: v.defaultValue,
+      }
+      if (keyBy === 'id') property.title = v.name
+      if (v.unit) property.description = v.unit
+      if (keyBy === 'id' && v.valueType === 'text') property.format = 'text'
+      return [keyBy === 'name' ? v.name : v.id, property]
+    })
+  )
+
+  return {
+    title: engine.name,
+    type: 'object',
+    properties,
+    required: inputs.map((v) => (keyBy === 'name' ? v.name : v.id)),
+  }
+}
+
+/**
+ * Translates a name→value inputs map into id→value (runtime expects ids).
+ */
+export function remapInputsByName(
+  engine: EngineState,
+  named: Record<string, string>
+): Record<string, string> {
+  const nameToId = new Map<string, string>()
+  for (const v of engine.variables ?? []) {
+    if (!v.name) continue
+    if (!nameToId.has(v.name)) nameToId.set(v.name, v.id)
+  }
+
+  const out: Record<string, string> = {}
+  for (const [name, value] of Object.entries(named)) {
+    const id = nameToId.get(name)
+    if (id) out[id] = value
+  }
+  return out
+}
+
+/**
+ * Projects an ExecuteResult into the public response shape keyed by step name.
+ * Only `kind === "output"` steps are exposed.
+ */
+export function buildOutputContract(
+  engine: EngineState,
+  result: ExecuteResult
+): OutputContract {
+  const outputNameById = new Map<string, string>()
+  for (const s of engine.steps) {
+    if ((s.kind ?? 'output') === 'output') outputNameById.set(s.id, s.name)
+  }
+
+  const outputs: Record<string, string | null> = {}
+  const errors: Record<string, string> = {}
+  for (const stepResult of result.steps) {
+    const name = outputNameById.get(stepResult.id)
+    if (!name) continue
+    if (stepResult.error) {
+      outputs[name] = null
+      errors[name] = stepResult.error
+    } else {
+      outputs[name] = stepResult.value
+    }
+  }
+
+  return { outputs, errors }
+}
+
+// --- Orchestration (convenience for routes) ---
+
+/**
+ * Executes the engine with name-keyed inputs. Handles the name→id remap
+ * internally so the route doesn't need to.
+ */
+export function executeCalc(
+  engine: EngineState,
+  namedInputs: Record<string, string>,
+  debug = false
+) {
+  const idInputs = remapInputsByName(engine, namedInputs)
+  return execute(engine, idInputs, { debug })
+}
+```
+
 ---
 
 ## Route Migration Example
@@ -293,12 +423,13 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 }
 ```
 
-### Calc route (dual auth)
+### Calc route (dual auth + services/calc.ts)
 
 ```ts
 // app/api/calc/[...segments]/route.ts
 import { resolveAuth } from "@/lib/auth"
 import { getEngineDefinition } from "@/services/engines"
+import { buildInputSchema, executeCalc, buildOutputContract } from "@/services/calc"
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ segments: string[] }> }) {
   const { segments } = await params
@@ -307,17 +438,41 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ segm
   }
 
   const auth = await resolveAuth(req)
-  if (auth === null) {
-    return NextResponse.json({ error: "INVALID_API_KEY" }, { status: 401 })
-  }
+  if (!auth) return NextResponse.json({ error: "INVALID_API_KEY" }, { status: 401 })
 
-  // resolveAuth already picked the right client (cookie or service-role)
   const engine = await getEngineDefinition(auth.db, segments[0])
-  if (!engine) {
-    return NextResponse.json({ error: "Engine not found" }, { status: 404 })
-  }
+  if (!engine) return NextResponse.json({ error: "Engine not found" }, { status: 404 })
 
   return NextResponse.json(buildInputSchema(engine, { keyBy: "name" }))
+}
+
+export async function POST(req: NextRequest, { params }: { params: Promise<{ segments: string[] }> }) {
+  const { segments } = await params
+  if (segments.length !== 1) {
+    return NextResponse.json({ error: "Invalid route" }, { status: 400 })
+  }
+
+  const auth = await resolveAuth(req)
+  if (!auth) return NextResponse.json({ error: "INVALID_API_KEY" }, { status: 401 })
+
+  const engine = await getEngineDefinition(auth.db, segments[0])
+  if (!engine) return NextResponse.json({ error: "Engine not found" }, { status: 404 })
+
+  const { inputs = {}, debug = false } = await req.json()
+  const result = executeCalc(engine, inputs, debug)
+
+  if (!result.success) {
+    return NextResponse.json(
+      { error: result.error, validationErrors: result.validationErrors },
+      { status: 422 }
+    )
+  }
+
+  const { outputs, errors } = buildOutputContract(engine, result)
+  const payload: Record<string, unknown> = { success: true, finalValue: result.finalValue, outputs }
+  if (Object.keys(errors).length > 0) payload.errors = errors
+  if (debug) payload.steps = result.steps
+  return NextResponse.json(payload)
 }
 ```
 
@@ -329,10 +484,13 @@ Incremental — migrate one route at a time, no big-bang refactor needed.
 
 1. Create `services/engines.ts` with all engine operations
 2. Migrate `app/api/engines/*` routes to use the service
-3. Migrate `app/api/calc/*` routes to use `getEngineDefinition`
-4. Create `services/projects.ts` with all project operations
-5. Migrate `app/api/projects/*` routes to use the service
-6. Verify all routes still work (existing tests + manual)
+3. Create `services/calc.ts` — move functions from `core/contract.ts` + add `executeCalc`
+4. Migrate `app/api/calc/*` routes to use `services/engines` + `services/calc`
+5. Migrate `app/api/schemas/*` routes to use `services/calc` (`buildInputSchema`)
+6. Delete `core/contract.ts` (zero remaining consumers) + remove its section from `core/README.md`
+7. Create `services/projects.ts` with all project operations
+8. Migrate `app/api/projects/*` routes to use the service
+9. Verify all routes still work (existing tests + manual)
 
 > **Note:** `lib/api-keys.ts` already acts as a service layer with caching.
 > It can stay as-is or be moved to `services/api-keys.ts` for consistency.
