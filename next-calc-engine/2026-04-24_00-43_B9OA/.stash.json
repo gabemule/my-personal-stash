@@ -1,0 +1,104 @@
+{
+  "id": "2026-04-24_00-43_B9OA",
+  "project": "next-calc-engine",
+  "timestamp": "2026-04-24T03:43:48.360Z",
+  "message": "@todo docs",
+  "tags": [],
+  "branch": "feat/authz_reinforcement",
+  "commit": "d18bd59cca925e1674d3cac1f735af9c051c1d56",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/APP_BUILDER_REORGANIZING.md",
+      "size": 23070,
+      "hash": "sha256:ec03c580c632"
+    },
+    {
+      "name": "@todo/NAME_SANITIZATION.md",
+      "size": 16899,
+      "hash": "sha256:ca7c05af2b2a"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
+      "size": 39314,
+      "hash": "sha256:3dc705bb5af7"
+    },
+    {
+      "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
+      "size": 56696,
+      "hash": "sha256:1f1d02232db5"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_API_KEYS.md",
+      "size": 12322,
+      "hash": "sha256:8beed471d48c"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md",
+      "size": 6979,
+      "hash": "sha256:32c2b49a9d94"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_INVITES.md",
+      "size": 13605,
+      "hash": "sha256:930a83f0630d"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_PLAN.md",
+      "size": 9296,
+      "hash": "sha256:c010526c16c9"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_PROGRESS.md",
+      "size": 13197,
+      "hash": "sha256:b51b48293a83"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md",
+      "size": 20168,
+      "hash": "sha256:d4073551c2e3"
+    },
+    {
+      "name": "@todo/AUTHZ_COMPLETE/AUTHZ_TENANT.md",
+      "size": 30599,
+      "hash": "sha256:499716dd3b20"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/0_API_KEYS.md",
+      "size": 4377,
+      "hash": "sha256:93893973fbeb"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/1_RBAC.md",
+      "size": 10059,
+      "hash": "sha256:f999049062bf"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/2_INVITES.md",
+      "size": 8688,
+      "hash": "sha256:23d18662c4d8"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/3_SETTINGS.md",
+      "size": 7563,
+      "hash": "sha256:11013a7068cf"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/4_TENANT.md",
+      "size": 8481,
+      "hash": "sha256:55bfbd4ca6b6"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/AUDIT_LOG.md",
+      "size": 4875,
+      "hash": "sha256:d52ef4e546f3"
+    },
+    {
+      "name": "@todo/AUTHZ_INCREMENTAL/README.md",
+      "size": 1668,
+      "hash": "sha256:c9de27525533"
+    }
+  ],
+  "totalSize": 287856,
+  "compressed": false
+}
