@@ -1,6 +1,6 @@
 # Name Sanitization — Plano completo
 
-> Plano **self-contained** para sanitizar `Variable.name` e `Step.name` diretamente (sem campo `slug` separado) e travar o formato via schema + migração one-shot. `name` continua sendo a chave pública da API `/api/calc/:engineId` em `inputs`, `outputs` e `errors`. Runtime intocado: expressões continuam referenciando por `id` interno.
+> Plano **self-contained** para sanitizar `Variable.name`, `Step.name` e `LookupTable.name` diretamente (sem campo `slug` separado) e travar o formato via schema + migração one-shot. `name` continua sendo a chave pública da API `/api/calc/:engineId` em `inputs`, `outputs` e `errors`. Runtime intocado: expressões continuam referenciando por `id` interno.
 
 ---
 
@@ -44,9 +44,9 @@ Entram como fato, não estão mais abertas a debate:
 2. **Helper em `lib/sanitize.ts`** (não `lib/slug.ts`). Exporta `sanitizeName(name, fallbackPrefix)` e `ensureUnique(base, used)`.
 3. **Migração via script TypeScript** (não SQL). Single source of truth: `sanitizeName` vive em um lugar só. `supabase.from("engines").update(...)`.
 4. **Sanitização na UI ocorre no `onBlur`.** Permite digitar `"Anos Sem Sinistro"` e ver virar `anos_sem_sinistro` ao sair do campo. `onChange` travaria o cursor no meio da digitação.
-5. **Aplicar em `Variable` e todos os `Step`** (inclusive `kind: "internal"` — vão virar chave em `debug.steps[]` eventualmente).
-6. **Não aplicar em `LookupTable.name`, `Engine.name`, `TableColumn.label`, `TableRow.label`.** Nenhum desses vira chave JSON do contrato público — são rótulos cosméticos.
-7. **Namespaces de unicidade separados.** `name` único dentro de `variables[]` e dentro de `steps[]`. Uma variable e um step **podem** ter o mesmo nome entre si (`inputs.x` vs `outputs.x` — chaves JSON diferentes).
+5. **Aplicar em `Variable`, todos os `Step` e `LookupTable`.** Variables e Steps são chaves do contrato público. LookupTable.name aparece em mensagens de erro do runtime (ex: `"Parâmetro obrigatório "${param}" não fornecido para tabela "${table.name}"`) e hoje sofre do mesmo bug dos steps (`ADD_TABLE` gera `"Tabela ${N}"` — maiúscula + espaço).
+6. **Não aplicar em `Engine.name`, `TableColumn.label`, `TableRow.label`.** Nenhum desses vira chave JSON do contrato público — são rótulos cosméticos.
+7. **Namespaces de unicidade separados.** `name` único dentro de `variables[]`, dentro de `steps[]` e dentro de `tables[]`. Variable, Step e Table **podem** compartilhar name entre si (vivem em namespaces JSON distintos).
 8. **Runtime intocado.** `lib/runtime/execute.ts` e `evaluator.ts` continuam consumindo `id` interno. Sanitização é só no boundary da UI/API.
 
 ---
@@ -56,6 +56,7 @@ Entram como fato, não estão mais abertas a debate:
 - **Regex:** `^[a-z][a-z0-9_]*$`
   - Começa com letra minúscula (evita `_foo`, `1foo`)
   - Contém apenas `[a-z0-9_]`
+- **Max length:** 64 caracteres. Nomes maiores são truncados pelo `sanitizeName` antes de retornar.
 - **Algoritmo `sanitizeName(name, fallbackPrefix)`**:
   1. Normalize Unicode (`.normalize("NFD").replace(/[\u0300-\u036f]/g, "")`) — remove acento.
   2. `toLowerCase()`.
@@ -69,7 +70,8 @@ Entram como fato, não estão mais abertas a debate:
 - **Namespace de unicidade:**
   - `variables[*].name` único entre variables do mesmo engine.
   - `steps[*].name` único entre steps do mesmo engine.
-  - Variable e Step **podem** compartilhar name entre si.
+  - `tables[*].name` único entre tables do mesmo engine.
+  - Variable, Step e Table **podem** compartilhar name entre si.
 
 ---
 
@@ -89,7 +91,7 @@ export function sanitizeName(name: string, fallbackPrefix = "item"): string {
   let slug = stripped.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "")
   if (!slug) return fallbackPrefix
   if (/^[0-9]/.test(slug)) slug = `${fallbackPrefix}_${slug}`
-  return slug
+  return slug.slice(0, 64)
 }
 
 /**
@@ -114,14 +116,16 @@ export function ensureUnique(base: string, used: Set<string>): string {
 **Arquivos:**
 - `lib/sanitize.ts` — **novo** (ver acima).
 - `lib/runtime/schema.ts`:
-  - `VariableSchema.name`: `z.string().regex(/^[a-z][a-z0-9_]*$/, "nome inválido: use [a-z0-9_], começando com letra")`.
+  - `VariableSchema.name`: `z.string().max(64).regex(/^[a-z][a-z0-9_]*$/, "nome inválido: use [a-z0-9_], começando com letra")`.
   - `StepSchema.name`: idem.
-  - `EngineSchema`: adicionar `.superRefine(...)` (ou `.refine(...)`) verificando unicidade de `variables[*].name` e `steps[*].name` (namespaces separados), citando o nome duplicado na mensagem.
+  - `LookupTableSchema.name`: idem.
+  - `EngineSchema`: adicionar `.superRefine(...)` (ou `.refine(...)`) verificando unicidade de `variables[*].name`, `steps[*].name` e `tables[*].name` (namespaces separados), citando o nome duplicado na mensagem.
 
 **Critério de pronto:**
 - `EngineSchema.safeParse` rejeita engine com `variable.name === "Anos Sem Sinistro"` com mensagem acionável.
 - Rejeita engine com dois steps de mesmo `name`.
-- Aceita variable e step compartilhando `name` entre si.
+- Rejeita engine com duas tables de mesmo `name`.
+- Aceita variable, step e table compartilhando `name` entre si.
 - `sanitizeName("Anos Sem Sinistro")` → `"anos_sem_sinistro"`.
 - `sanitizeName("Área %")` → `"area"`.
 - `sanitizeName("123 abc", "var")` → `"var_123_abc"`.
@@ -144,6 +148,7 @@ export function ensureUnique(base: string, used: Set<string>): string {
 - Pra cada registro:
   - `engine.variables`: pra cada variable, se `name` já obedece a regex, mantém; senão aplica `sanitizeName(name, "var")`. Dedup via `ensureUnique` contra os `name` já atribuídos no array.
   - `engine.steps`: idem com fallback `"etapa"`.
+  - `engine.tables`: idem com fallback `"tabela"`.
   - Se houve qualquer mudança, atualiza via `supabase.from("engines").update({ engine }).eq("id", id)`.
 - **Flags:**
   - Default: `--dry-run` (imprime diff por engine, não grava).
@@ -178,7 +183,13 @@ export function ensureUnique(base: string, used: Set<string>): string {
     const used = new Set(engine.variables.filter(x => x.id !== action.id).map(x => x.name))
     patch.name = ensureUnique(sanitizeName(patch.name, "var"), used)
     ```
-  - `UPDATE_STEP`: idem com fallback `"etapa"` e `engine.steps`.
+  - `ADD_TABLE`: **bug atual** — gera `"Tabela ${N}"` (inválido). Trocar por `ensureUnique("tabela_" + (engine.tables.length + 1), usedTableNames)`.
+  - `UPDATE_TABLE`: se `patch.name !== undefined`, aplicar:
+    ```ts
+    const used = new Set(engine.tables.filter(x => x.id !== action.id).map(x => x.name))
+    patch.name = ensureUnique(sanitizeName(patch.name, "tabela"), used)
+    ```
+  - `IMPORT_STATE`: hoje carrega estado externo sem validação de names. Adicionar guarda: rodar `EngineSchema.safeParse` no state importado e rejeitar (ou sanitizar automaticamente) se names forem inválidos. Sem isso, um JSON externo com names sujos bypassa toda a proteção.
 
 - `app/builder/components/VariablesPanel/index.tsx`:
   - Input continua com `value={v.name}` e `onChange={(e) => dispatch({ type: "UPDATE_VARIABLE", id: v.id, patch: { name: e.target.value } })}`.
@@ -199,11 +210,16 @@ export function ensureUnique(base: string, used: Set<string>): string {
 - `app/builder/components/StepCard/index.tsx`:
   - Mesma mudança no input de `step.name`.
 
+- Componente de tabela (onde quer que o input de `table.name` viva):
+  - Mesma mudança `onBlur` no input de `table.name`.
+
 **Critério de pronto:**
 - Criar uma variável nova: aparece com `name: "var_7"` (válido).
 - Criar um step novo: aparece com `name: "etapa_1"` (válido — antes era `"Etapa 1"`).
+- Criar uma table nova: aparece com `name: "tabela_1"` (válido — antes era `"Tabela 1"`).
 - Editar `name` de variable pra `"Anos Sem Sinistro"` e tirar o foco: vira `anos_sem_sinistro`.
 - Editar pra um name que gere colisão: vira `anos_sem_sinistro_2` automaticamente.
+- Importar engine externo com names sujos: rejeitado ou auto-sanitizado.
 - Salvar engine via `engineStore.updateEngine` → `EngineSchema.safeParse` passa.
 
 ---
@@ -216,6 +232,8 @@ export function ensureUnique(base: string, used: Set<string>): string {
 - `app/api/calc/[...segments]/route.ts`:
   - Remover o comentário/fallback de first-wins em `remapNamesToIds` (se houver) — schema estrito agora garante unicidade na entrada. Se duas variables tiverem mesmo `name`, a engine nem chega a essa função: `EngineSchema.safeParse` rejeita antes.
   - JSDoc (opcional): mencionar que o `name` obedece regex `^[a-z][a-z0-9_]*$` no contrato público.
+- `app/api/schema/route.ts` (ou rotas em `app/api/schemas/`):
+  - Expõe o input schema pro consumidor com property names baseados em `Variable.name`. Coberta implicitamente pela migração S.2 (nomes no banco já sanitizados), mas validar explicitamente que o output segue o formato.
 
 **Breaking behavior (intencional):**
 - Cliente externo que enviava `inputs["Anos Sem Sinistro"]` passa a ver esse valor como chave desconhecida (ignorada ou erro, dependendo de como `inputSchema()` trata `unknownKeys`). Migração no lado do banco (S.2) garante que o `Variable.name` persistido é `anos_sem_sinistro`.
@@ -263,9 +281,10 @@ Bodies de exemplo já estão em snake_case (após B.5 parcial). Sem mudança de 
 - [ ] `sanitizeName("123 abc", "var")` → `"var_123_abc"`.
 - [ ] `sanitizeName("", "var")` → `"var"`.
 - [ ] `ensureUnique("x", new Set(["x","x_2"]))` → `"x_3"`.
-- [ ] `EngineSchema.safeParse` rejeita `name` inválido e `name` duplicado dentro de variables ou steps.
+- [ ] `EngineSchema.safeParse` rejeita `name` inválido e `name` duplicado dentro de variables, steps ou tables.
 - [ ] Script `2026-04-21-sanitize-names.ts` é idempotente (`--apply` duas vezes = `0 engines atualizados` na segunda).
-- [ ] Builder UI: criar/editar variable/step gera sempre `name` válido; blur sanitiza input livre.
+- [ ] Builder UI: criar/editar variable/step/table gera sempre `name` válido; blur sanitiza input livre.
+- [ ] `IMPORT_STATE` rejeita ou auto-sanitiza engines com names inválidos.
 - [ ] POST `/api/calc/:engineId` com body em snake_case funciona; com chaves antigas é ignorado/erro.
 - [ ] Bruno `calc/*` verde com docs atualizadas.
 - [ ] Smoke staging: 5 engines aleatórios carregam + executam pós-migração sem erro.
@@ -274,29 +293,31 @@ Bodies de exemplo já estão em snake_case (após B.5 parcial). Sem mudança de 
 
 ## Decisões diferidas
 
-- **Campo `label?: string` opcional em `Variable`/`Step`.** Pra exibir rótulo humano livre no builder/calc sem afetar a chave JSON. Só fazemos se alguém reclamar de UX. Fora da v1.
-- **Sanitização em `LookupTable.name` / `Engine.name`.** Só vira necessário se algum dia esses campos virarem chave JSON de API. Hoje são cosméticos. Fora da v1.
+- **Campo `label?: string` opcional em `Variable`/`Step`/`LookupTable`.** Pra exibir rótulo humano livre no builder/calc sem afetar a chave JSON. Só fazemos se alguém reclamar de UX. Fora da v1.
+- **Sanitização em `Engine.name`.** Só vira necessário se algum dia virar chave JSON de API. Hoje é cosmético. Fora da v1.
+- **Sanitização em `LookupTable.parameters` (`string[]`).** Nomes de parâmetros de tabela. Hoje são internos ao runtime (usados em `tableRef.arguments`), não viram chave de API. Se um dia virarem chave em debug output ou table schema público, aplicar mesma regex. Fora da v1.
 - **Mensagem de erro específica no POST quando chave do request é desconhecida.** Hoje `inputSchema()` pode simplesmente ignorar; se quisermos "chave `Anos Sem Sinistro` não existe — você quis dizer `anos_sem_sinistro`?", é mudança no `inputSchema` com `.strict()` + catch. Fora da v1.
 
 ---
 
 ## Progresso
 
-- **Última atualização:** 2026-04-21 (documento reescrito — abandonado o plano de `slug`)
+- **Última atualização:** 2026-04-24 (v3 — audit: LookupTable.name no escopo + gaps)
 - **Status global:** 🔴 não iniciado
 - **Total de itens:** 5 commits principais (S.1 a S.5)
 
 ### Checklist
 
-- [ ] **S.1** Helper `lib/sanitize.ts` + regex/refine em `VariableSchema`/`StepSchema`/`EngineSchema`
-- [ ] **S.2** Script `scripts/migrations/2026-04-21-sanitize-names.ts` + dry-run/apply em staging e prod
-- [ ] **S.3** UI do builder: reducer sanitiza em `ADD_*`/`UPDATE_*`; inputs commitam no `onBlur`
-- [ ] **S.4** `/api/calc`: remover fallback first-wins; atualizar JSDoc
+- [ ] **S.1** Helper `lib/sanitize.ts` + regex/refine em `VariableSchema`/`StepSchema`/`LookupTableSchema`/`EngineSchema`
+- [ ] **S.2** Script `scripts/migrations/2026-04-21-sanitize-names.ts` + dry-run/apply em staging e prod (variables + steps + tables)
+- [ ] **S.3** UI do builder: reducer sanitiza em `ADD_*`/`UPDATE_*` (var/step/table); `IMPORT_STATE` valida; inputs commitam no `onBlur`
+- [ ] **S.4** `/api/calc` + `/api/schema`: remover fallback first-wins; atualizar JSDoc
 - [ ] **S.5** Bruno docs citam formato `^[a-z][a-z0-9_]*$`
 
 ---
 
 ## Changelog
 
+- **2026-04-24 (v3)** — **Audit completo** do plano vs código real. Mudanças: (1) `LookupTable.name` entra no escopo de sanitização — mesmo bug dos steps (`ADD_TABLE` gera `"Tabela N"`), e `table.name` aparece em mensagens de erro do runtime. (2) Max length 64 chars adicionado à regex e ao helper (`.slice(0, 64)`). (3) `IMPORT_STATE` ganha guarda de validação pra rejeitar/sanitizar engines importados com names sujos. (4) `/api/schema` mencionada explicitamente no S.4 (coberta implicitamente pela migração, mas agora documentada). (5) `LookupTable.parameters` registrada como decisão diferida. (6) `LookupTable.name` removida de "decisões diferidas" e movida pro escopo ativo.
 - **2026-04-21 (v2)** — Documento **reescrito do zero** após discussão de YAGNI. Abandonado o plano de adicionar campo `slug` separado coexistindo com `name` livre. Novo plano: **`name` é a chave pública e única**, sanitizada diretamente via `sanitizeName` (helper em `lib/sanitize.ts`). Migração one-shot via **script TS** (não SQL) usando `supabase-js` + service role, compartilhando a função de sanitização com o runtime (single source of truth). UI sanitiza no `onBlur` de inputs de `Variable.name` e `Step.name`. Schema Zod ganha regex `^[a-z][a-z0-9_]*$` e `.refine()` de unicidade. Runtime intocado. Motivação concreta: Barney sinalizou overengineering no plano de `slug` — `"eh mais jogo simplesmente santizar o name, passar um script sanitizando tudo de name q tivermos no banco q nao esteja no formato certo, e reforçar a validacao para so aceitar o novo formato de agora em diante"`.
 - **2026-04-21 (v1 — obsoleto)** — Primeira versão propunha campo `slug` separado, preview mono abaixo do input, migração one-shot populando `slug`. Rejeitado por overengineering: adicionava camada redundante (dois campos: um livre + um derivado) sem necessidade real — se o consumidor da API já teria que usar o derivado, mais simples sanitizar o próprio `name` e pronto.
