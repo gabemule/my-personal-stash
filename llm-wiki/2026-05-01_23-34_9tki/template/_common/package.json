@@ -1,0 +1,21 @@
+{
+  "name": "{{SLUG}}",
+  "version": "0.1.0",
+  "private": true,
+  "description": "{{NAME}} — LLM Wiki oracle ({{DOMAIN}})",
+  "scripts": {
+    "init":      "claude --append-system-prompt-file CLAUDE.md \"/wiki-init\"",
+    "chat":      "claude --append-system-prompt-file CLAUDE.md",
+    "continue":  "claude -c",
+    "ingest":    "node scripts/run.mjs ingest",
+    "query":     "node scripts/run.mjs query",
+    "lint":      "claude -p --append-system-prompt-file CLAUDE.md \"Run /wiki-lint per CLAUDE.md.\"",
+    "status":    "node scripts/status.mjs",
+    "manifest":  "node scripts/manifest.mjs",
+    "pending":   "node scripts/manifest.mjs --pending",
+    "smoke":     "node scripts/status.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

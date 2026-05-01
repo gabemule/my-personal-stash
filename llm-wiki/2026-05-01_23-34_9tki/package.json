@@ -1,0 +1,37 @@
+{
+  "name": "create-sourcebase",
+  "version": "0.1.0",
+  "description": "Scaffold an LLM Wiki oracle (Karpathy pattern) for Claude Code + Obsidian, in PT-BR.",
+  "type": "module",
+  "bin": {
+    "create-source-base": "bin/cli.mjs",
+    "llm-wiki": "bin/cli.mjs"
+  },
+  "files": [
+    "bin",
+    "template",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "llm",
+    "wiki",
+    "obsidian",
+    "claude-code",
+    "knowledge-base",
+    "karpathy",
+    "oracle",
+    "pkm",
+    "scaffold",
+    "template"
+  ],
+  "license": "MIT",
+  "author": "Barney",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "prompts": "^2.4.2"
+  }
+}

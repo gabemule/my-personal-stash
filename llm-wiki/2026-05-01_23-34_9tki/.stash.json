@@ -1,0 +1,247 @@
+{
+  "id": "2026-05-01_23-34_9tki",
+  "project": "llm-wiki",
+  "timestamp": "2026-05-01T23:34:24.137Z",
+  "message": "llm wiki project idea",
+  "tags": [],
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": ".gitignore",
+      "size": 197,
+      "hash": "sha256:3cb307fd34cb"
+    },
+    {
+      "name": "CLAUDE-SKILLS.md",
+      "size": 10348,
+      "hash": "sha256:97d844bc8683"
+    },
+    {
+      "name": "DECISIONS.md",
+      "size": 10257,
+      "hash": "sha256:c1bf162d73d5"
+    },
+    {
+      "name": "LICENSE",
+      "size": 1069,
+      "hash": "sha256:29a97b84a577"
+    },
+    {
+      "name": "OBSIDIAN.md",
+      "size": 8316,
+      "hash": "sha256:6f7ed0f4785c"
+    },
+    {
+      "name": "README.md",
+      "size": 5544,
+      "hash": "sha256:9b6c947c8ae3"
+    },
+    {
+      "name": "package-lock.json",
+      "size": 1844,
+      "hash": "sha256:ab648f14671b"
+    },
+    {
+      "name": "package.json",
+      "size": 675,
+      "hash": "sha256:65db049b289d"
+    },
+    {
+      "name": "@todo/API.md",
+      "size": 16052,
+      "hash": "sha256:c8523799cbbb"
+    },
+    {
+      "name": "@todo/MONOREPO.md",
+      "size": 21116,
+      "hash": "sha256:9c0819e140b8"
+    },
+    {
+      "name": "@todo/WEB-UI.md",
+      "size": 10006,
+      "hash": "sha256:52d3049b83a5"
+    },
+    {
+      "name": "bin/cli.mjs",
+      "size": 10838,
+      "hash": "sha256:836c1a69603a"
+    },
+    {
+      "name": "template/en/.todo",
+      "size": 654,
+      "hash": "sha256:96fa736e9f89"
+    },
+    {
+      "name": "template/_common/_gitignore",
+      "size": 337,
+      "hash": "sha256:f323401a1c35"
+    },
+    {
+      "name": "template/_common/package.json",
+      "size": 748,
+      "hash": "sha256:9559be13f78d"
+    },
+    {
+      "name": "template/pt-br/_shared/CLAUDE.md",
+      "size": 17808,
+      "hash": "sha256:d409d97fbd37"
+    },
+    {
+      "name": "template/pt-br/_shared/README.md",
+      "size": 6286,
+      "hash": "sha256:58ddd18e4388"
+    },
+    {
+      "name": "template/_common/raw/.gitkeep",
+      "size": 0,
+      "hash": "sha256:e3b0c44298fc"
+    },
+    {
+      "name": "template/_common/scripts/manifest.mjs",
+      "size": 5330,
+      "hash": "sha256:763df95e787b"
+    },
+    {
+      "name": "template/_common/scripts/run.mjs",
+      "size": 1636,
+      "hash": "sha256:d27b4eb3ab6d"
+    },
+    {
+      "name": "template/_common/scripts/status.mjs",
+      "size": 2227,
+      "hash": "sha256:63da43d61d72"
+    },
+    {
+      "name": "template/_common/.claude/commands/wiki-ingest.md",
+      "size": 1826,
+      "hash": "sha256:9d62bd06b92f"
+    },
+    {
+      "name": "template/_common/.claude/commands/wiki-init.md",
+      "size": 2049,
+      "hash": "sha256:d0f20e72a9e5"
+    },
+    {
+      "name": "template/_common/.claude/commands/wiki-lint.md",
+      "size": 1750,
+      "hash": "sha256:372c6da3c5f3"
+    },
+    {
+      "name": "template/_common/.claude/commands/wiki-query.md",
+      "size": 1233,
+      "hash": "sha256:ca0320bd367b"
+    },
+    {
+      "name": "template/_common/.claude/commands/wiki-status.md",
+      "size": 784,
+      "hash": "sha256:6fbeb9f5d91a"
+    },
+    {
+      "name": "template/pt-br/_presets/pkm/wiki/books.md",
+      "size": 631,
+      "hash": "sha256:49723d4f5a30"
+    },
+    {
+      "name": "template/pt-br/_presets/pkm/wiki/habits.md",
+      "size": 660,
+      "hash": "sha256:ea766caee015"
+    },
+    {
+      "name": "template/pt-br/_presets/pkm/wiki/ideas.md",
+      "size": 655,
+      "hash": "sha256:c7dd5264a8bf"
+    },
+    {
+      "name": "template/pt-br/_presets/pkm/wiki/people.md",
+      "size": 618,
+      "hash": "sha256:e3471bdaafe3"
+    },
+    {
+      "name": "template/pt-br/_presets/book/wiki/characters.md",
+      "size": 534,
+      "hash": "sha256:2645b6d974ac"
+    },
+    {
+      "name": "template/pt-br/_presets/book/wiki/structure.md",
+      "size": 508,
+      "hash": "sha256:18bc396e0d9c"
+    },
+    {
+      "name": "template/pt-br/_presets/book/wiki/themes.md",
+      "size": 459,
+      "hash": "sha256:20717ecb6cd5"
+    },
+    {
+      "name": "template/pt-br/_presets/book/wiki/timeline.md",
+      "size": 518,
+      "hash": "sha256:866f564cf074"
+    },
+    {
+      "name": "template/pt-br/_presets/book/wiki/world.md",
+      "size": 523,
+      "hash": "sha256:853876b621d4"
+    },
+    {
+      "name": "template/pt-br/_presets/project/wiki/decisions.md",
+      "size": 568,
+      "hash": "sha256:a74d2873e22f"
+    },
+    {
+      "name": "template/pt-br/_presets/project/wiki/goals.md",
+      "size": 534,
+      "hash": "sha256:c7f4098539f8"
+    },
+    {
+      "name": "template/pt-br/_presets/project/wiki/milestones.md",
+      "size": 551,
+      "hash": "sha256:c149e48dc2d9"
+    },
+    {
+      "name": "template/pt-br/_presets/project/wiki/risks.md",
+      "size": 579,
+      "hash": "sha256:5ec0fe55402f"
+    },
+    {
+      "name": "template/pt-br/_presets/project/wiki/stakeholders.md",
+      "size": 607,
+      "hash": "sha256:9db27d591d1d"
+    },
+    {
+      "name": "template/pt-br/_shared/wiki/index.md",
+      "size": 726,
+      "hash": "sha256:172cb3f85cec"
+    },
+    {
+      "name": "template/pt-br/_shared/wiki/log.md",
+      "size": 371,
+      "hash": "sha256:92ea6021ef6a"
+    },
+    {
+      "name": "template/pt-br/_shared/wiki/overview.md",
+      "size": 1388,
+      "hash": "sha256:cd0999600c1a"
+    },
+    {
+      "name": "template/pt-br/_presets/research/wiki/bibliography.md",
+      "size": 664,
+      "hash": "sha256:7335b92e16f9"
+    },
+    {
+      "name": "template/pt-br/_presets/research/wiki/concepts.md",
+      "size": 608,
+      "hash": "sha256:771e2f949145"
+    },
+    {
+      "name": "template/pt-br/_presets/research/wiki/findings.md",
+      "size": 712,
+      "hash": "sha256:128bc79d2390"
+    },
+    {
+      "name": "template/pt-br/_presets/research/wiki/questions.md",
+      "size": 672,
+      "hash": "sha256:2be6a0337e25"
+    }
+  ],
+  "totalSize": 152016,
+  "compressed": false
+}

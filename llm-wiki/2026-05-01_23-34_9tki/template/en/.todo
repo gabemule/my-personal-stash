@@ -1,0 +1,16 @@
+English template — TODO
+
+Translate the entire `template/pt-br/_shared/` and `template/pt-br/_presets/`
+trees to English. The CLI does not yet expose `--lang en` because this slot
+is empty.
+
+Source of truth: `template/pt-br/_shared/CLAUDE.md` and the four presets
+under `template/pt-br/_presets/`. When translating:
+
+- Filenames already in English — keep them.
+- Frontmatter keys already in English — keep them.
+- Translate frontmatter values, headings, prose, slash-command bodies,
+  CLAUDE.md and README.md.
+- Update the CLI in `bin/cli.mjs` to accept and route `--lang en`.
+
+Until then, the CLI assumes `pt-br` and copies from `template/pt-br/`.
