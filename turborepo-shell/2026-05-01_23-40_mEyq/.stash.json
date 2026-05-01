@@ -1,0 +1,47 @@
+{
+  "id": "2026-05-01_23-40_mEyq",
+  "project": "turborepo-shell",
+  "timestamp": "2026-05-01T23:40:56.790Z",
+  "message": "turbo repo mono repo plans",
+  "tags": [],
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "README.md",
+      "size": 3574,
+      "hash": "sha256:09003607dc33"
+    },
+    {
+      "name": "docs/01-architecture.md",
+      "size": 10221,
+      "hash": "sha256:4e48f2ef654e"
+    },
+    {
+      "name": "docs/02-routing.md",
+      "size": 15934,
+      "hash": "sha256:78f9a68b5917"
+    },
+    {
+      "name": "docs/03-shared-auth.md",
+      "size": 14341,
+      "hash": "sha256:5a113b033cbb"
+    },
+    {
+      "name": "docs/04-shared-libraries.md",
+      "size": 11256,
+      "hash": "sha256:6bbb89c1fe6b"
+    },
+    {
+      "name": "docs/05-environment-variables.md",
+      "size": 11465,
+      "hash": "sha256:e6ff4b435077"
+    },
+    {
+      "name": "docs/06-developer-guide.md",
+      "size": 9678,
+      "hash": "sha256:d34e602fb7de"
+    }
+  ],
+  "totalSize": 76469,
+  "compressed": false
+}
