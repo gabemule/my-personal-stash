@@ -1,0 +1,47 @@
+{
+  "id": "2026-05-01_23-39_MB1p",
+  "project": "cheatsheets",
+  "timestamp": "2026-05-01T23:39:57.961Z",
+  "message": "cheatsheets helpers",
+  "tags": [],
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@cheatsheets/DOCKER.md",
+      "size": 33493,
+      "hash": "sha256:e31d5baa596d"
+    },
+    {
+      "name": "@cheatsheets/HOMEBREW.md",
+      "size": 31642,
+      "hash": "sha256:431427444f1f"
+    },
+    {
+      "name": "@cheatsheets/LLAMA-CPP.md",
+      "size": 47636,
+      "hash": "sha256:a87e08d59093"
+    },
+    {
+      "name": "@cheatsheets/NODE.md",
+      "size": 59840,
+      "hash": "sha256:85417f2b9dcb"
+    },
+    {
+      "name": "@cheatsheets/NVM.md",
+      "size": 35368,
+      "hash": "sha256:054508f41cf0"
+    },
+    {
+      "name": "@cheatsheets/OLLAMA.md",
+      "size": 29769,
+      "hash": "sha256:b09120e30365"
+    },
+    {
+      "name": "@cheatsheets/README.md",
+      "size": 12667,
+      "hash": "sha256:febacd867252"
+    }
+  ],
+  "totalSize": 250415,
+  "compressed": false
+}
