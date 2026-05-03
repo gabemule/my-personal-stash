@@ -1,0 +1,32 @@
+{
+  "id": "2026-05-03_03-23_q1TJ",
+  "project": "Rules",
+  "timestamp": "2026-05-03T03:23:13.156Z",
+  "message": "Global Cline Rules",
+  "tags": [],
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "adr_discipline.md",
+      "size": 1448,
+      "hash": "sha256:08c7030d5f18"
+    },
+    {
+      "name": "context_management.md",
+      "size": 5414,
+      "hash": "sha256:47afdd30c299"
+    },
+    {
+      "name": "custom_instructions.md",
+      "size": 162,
+      "hash": "sha256:d8c16bbc5919"
+    },
+    {
+      "name": "karpathy_behavioral_guidelines.md",
+      "size": 2637,
+      "hash": "sha256:2e24db6271c1"
+    }
+  ],
+  "totalSize": 9661,
+  "compressed": false
+}
