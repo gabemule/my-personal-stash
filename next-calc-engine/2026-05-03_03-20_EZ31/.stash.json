@@ -1,0 +1,19 @@
+{
+  "id": "2026-05-03_03-20_EZ31",
+  "project": "next-calc-engine",
+  "timestamp": "2026-05-03T03:20:49.223Z",
+  "message": "cline rules",
+  "tags": [],
+  "branch": "feat/name_sanitization",
+  "commit": "e2917519babcaa99bdd10e2d35925bc494237add",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": ".clinerules",
+      "size": 5140,
+      "hash": "sha256:7de72cf72746"
+    }
+  ],
+  "totalSize": 5140,
+  "compressed": false
+}

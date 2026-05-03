@@ -1,0 +1,72 @@
+# next-calc-engine — Project Rules
+
+## How to Create New Features
+
+### New API endpoint
+1. Define Zod schemas in `schemas/api.ts` (request body, response shape if needed)
+2. Create service functions in `services/[entity].ts` — business logic lives here, NOT in route handlers
+3. Create route handler in `app/api/[resource]/route.ts` — thin layer: parse request → call service → format response
+4. Add Bruno request file in `bruno/[resource]/` to keep API testing in sync
+5. If the entity has a colocated test, add test cases in `services/[entity].test.ts`
+6. If the endpoint is public/documented, add its request/response schemas to `schemas/endpoints.ts` (Zod → JSON Schema registry for `/api/schema` and `/api/schemas/*`)
+
+### New service function
+- Accept `db?: DbClient` as last parameter (optional), default to `await createClient()` inside
+- Import `DbClient` and `createClient` from `@/services/client` — never import Supabase directly. For privileged operations (bypassing RLS), use `createServiceClient` from `@/services/server` instead
+- Use structured logging: `logger.info({ entityId }, "entity.action")` / `logger.error({ error: error.message }, "entity.action failed")`
+- For domain-specific errors, export a custom Error class with a `readonly code` (e.g., `EngineConflictError`)
+- Soft-delete queries must always filter `.is("disabled_at", null)` — never return soft-deleted rows
+
+### Route handler conventions
+- Validate input early, return 400 with `{ error: "description" }` for invalid requests
+- Catch service errors by type: custom errors → specific status (409, 404), unknown errors → 500
+- Use JSDoc with `@query`, `@body`, `@returns` to document the endpoint contract
+- Response shape: `data` on success, `{ error: string, code?: string }` on failure
+- Routes NEVER query the DB directly and NEVER contain business logic — delegate to services
+- Services NEVER import `NextRequest`/`NextResponse` and NEVER format HTTP responses — they return data or throw
+
+## DB Client Rules
+
+- `services/client.ts` → SSR client (anon key + cookies) — **respects RLS**. Default for all service functions
+- `services/server.ts` → service-role client — **bypasses RLS**. Only for privileged ops (API key validation, admin writes). Protected with `import "server-only"` (build error if imported in Client Component)
+- When creating a new server-only module, add `import "server-only"` at the top to prevent accidental client-side leaks
+
+## Architectural Constraints
+
+- `proxy.ts` acts as middleware (not Next.js `middleware.ts`) — handles auth redirects and Bearer bypass for calc routes
+- Auth flow: `proxy.ts` calls `supabase.auth.getUser()` on every non-exempt request; calc routes with `Bearer` header skip this (~800ms saving)
+- Zod schemas in `schemas/api.ts` are the single source of truth (ADR 003) — derive TypeScript types via `z.infer<>`, don't create parallel interfaces
+- Services layer (ADR 002) is the only place for business logic — route handlers are thin wrappers
+- Soft-delete uses `disabled_at timestamptz` column — never hard-delete rows (ADR 004)
+- Names are sanitized on create/update (ADR 001) — see `libs/sanitize.ts`
+- Domain model: Project → Engine(s) → Calc execution. Engine belongs to a Project (but `project_id` can currently be NULL — legacy)
+- Only one engine can be active per project scope (`is_active` + deactivate siblings pattern)
+
+## Things That Look Wrong But Are Intentional
+
+- `engines.project_id` is nullable — legacy data; AUTHZ migration will make it NOT NULL
+- RLS is currently permissive (`authenticated = full access`) — this is a known gap, not a security design
+- `proxy.ts` is not `middleware.ts` — intentional choice for Supabase SSR cookie handling pattern
+- `disabled_at` (not `deleted_at`) is the current soft-delete column name in engines/projects
+
+## Testing Conventions
+
+- **Runner:** Vitest (`yarn test`)
+- **Files:** `*.test.ts` colocated next to source (e.g., `services/engines.test.ts`)
+- **Structure:** `describe("functionName")` → `it("should ...")`
+- **Mocks:** `vi.mock()` for Supabase client — see `services/client.test.ts` for pattern
+- **API integration:** Bruno collection in `bruno/` with environments (`local`, `development`, `staging`)
+- When adding a new service function, add tests in the colocated test file
+- When adding a new API endpoint, add a Bruno request file in `bruno/[resource]/`
+
+## ADRs (read before making architectural changes)
+
+- `docs/adr/001-name-sanitization.md` — Name sanitization
+- `docs/adr/002-services-layer.md` — Services layer between routes and DB
+- `docs/adr/003-zod-as-ssot.md` — Zod schemas as SSOT
+- `docs/adr/004-soft-delete.md` — Soft-delete pattern
+- `docs/adr/005-dual-auth.md` — Dual auth (session + Bearer API key)
+- `docs/adr/006-proxy-auth-middleware.md` — Custom proxy instead of Next.js middleware
+- `docs/adr/007-jsonb-engine-storage.md` — Engine state as single JSONB column
+- `docs/adr/008-id-internal-name-external.md` — Internal IDs, external names
+- `docs/adr/009-decimal-precision.md` — Decimal.js for arbitrary-precision arithmetic
