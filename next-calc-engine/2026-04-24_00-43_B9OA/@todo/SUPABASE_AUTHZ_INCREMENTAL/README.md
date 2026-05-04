@@ -1,6 +1,6 @@
 # AUTHZ Incremental — Visão Geral
 
-Abordagem lean decidida após revisão do [plano completo](../AUTHZ_COMPLETE/AUTHZ_PLAN.md).
+Abordagem lean decidida após revisão do [plano completo](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md).
 
 **Motivação:** implementar autorização em fases progressivas, entregando valor a cada passo sem a complexidade do multi-tenant desde o início.
 
@@ -17,9 +17,9 @@ Abordagem lean decidida após revisão do [plano completo](../AUTHZ_COMPLETE/AUT
 | 4 | [`4_TENANT.md`](./4_TENANT.md) | Multi-tenant — evolução de tudo acima | ⏳ Futuro |
 | — | [`AUDIT_LOG.md`](./AUDIT_LOG.md) | Audit log — plantado, implementar quando doer | 🌱 Plantado |
 
-## Relação com AUTHZ_COMPLETE
+## Relação com SUPABASE_AUTHZ_COMPLETE
 
-[`AUTHZ_COMPLETE/`](../AUTHZ_COMPLETE/) contém o plano original com multi-tenant desde o início. Este diretório é a alternativa incremental — cada fase referencia o COMPLETE onde os contratos detalhados de tenant já estão documentados.
+[`SUPABASE_AUTHZ_COMPLETE/`](../SUPABASE_AUTHZ_COMPLETE/) contém o plano original com multi-tenant desde o início. Este diretório é a alternativa incremental — cada fase referencia o COMPLETE onde os contratos detalhados de tenant já estão documentados.
 
 A Fase 4 (tenant) é essencialmente uma migration do que as Fases 1–3 implementaram globalmente para um modelo scoped. Os contratos do COMPLETE permanecem válidos como destino final.
 

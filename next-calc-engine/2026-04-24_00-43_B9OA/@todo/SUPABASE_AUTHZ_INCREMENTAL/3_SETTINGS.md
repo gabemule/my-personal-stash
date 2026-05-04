@@ -2,7 +2,7 @@
 
 > **Depende de:** Fase 1 — [`1_RBAC.md`](./1_RBAC.md) · Fase 2 — [`2_INVITES.md`](./2_INVITES.md)
 > **Próxima fase:** [`4_TENANT.md`](./4_TENANT.md)
-> **Referência completa:** [`../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md)
+> **Referência completa:** [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md)
 
 Fases 1 e 2 entregam o backend (roles, API keys com role, convites). Esta fase entrega a UI de gestão para que o admin possa administrar tudo sem Bruno ou SQL.
 

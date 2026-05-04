@@ -2,7 +2,7 @@
 
 > **Depende de:** Fase 0 — [`0_API_KEYS.md`](./0_API_KEYS.md)
 > **Próxima fase:** [`2_INVITES.md`](./2_INVITES.md)
-> **Referência completa:** [`../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md) · [`../AUTHZ_COMPLETE/AUTHZ_PLAN.md`](../AUTHZ_COMPLETE/AUTHZ_PLAN.md)
+> **Referência completa:** [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md) · [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md)
 
 Entrega roles globais (sem tenant): toda a plataforma tem um único espaço de autorização.
 Hoje, qualquer user autenticado tem acesso total. Esta fase divide em 3 níveis.

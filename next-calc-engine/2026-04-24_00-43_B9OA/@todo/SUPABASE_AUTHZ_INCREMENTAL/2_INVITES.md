@@ -2,7 +2,7 @@
 
 > **Depende de:** Fase 1 — [`1_RBAC.md`](./1_RBAC.md) (`user_roles` + `requireRole`)
 > **Próxima fase:** [`3_SETTINGS.md`](./3_SETTINGS.md)
-> **Referência completa:** [`../AUTHZ_COMPLETE/AUTHZ_INVITES.md`](../AUTHZ_COMPLETE/AUTHZ_INVITES.md)
+> **Referência completa:** [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md)
 
 Sem convite self-service, adicionar um user exige SQL direto. Esta fase fecha o loop:
 

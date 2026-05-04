@@ -1,13 +1,13 @@
 # AUTHZ Incremental — Fase 4: Multi-tenant
 
 > **Depende de:** Fase 1 — [`1_RBAC.md`](./1_RBAC.md) · Fase 2 — [`2_INVITES.md`](./2_INVITES.md) · Fase 3 — [`3_SETTINGS.md`](./3_SETTINGS.md)
-> **Referência completa (contratos detalhados):** [`../AUTHZ_COMPLETE/AUTHZ_TENANT.md`](../AUTHZ_COMPLETE/AUTHZ_TENANT.md) · [`../AUTHZ_COMPLETE/AUTHZ_API_KEYS.md`](../AUTHZ_COMPLETE/AUTHZ_API_KEYS.md) · [`../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md) · [`../AUTHZ_COMPLETE/AUTHZ_INVITES.md`](../AUTHZ_COMPLETE/AUTHZ_INVITES.md)
+> **Referência completa (contratos detalhados):** [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md) · [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_API_KEYS.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_API_KEYS.md) · [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md) · [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md)
 
 Isolamento de dados entre clientes. Cada tenant tem seus próprios projetos, engines, API keys e membros. O que as Fases 1–3 implementaram globalmente passa a ser scoped por tenant.
 
 **Motivação:** dois clientes não deveriam ver os dados um do outro. Criação e gestão de tenants é um processo comercial controlado — não self-service.
 
-> **Contratos detalhados estão em `AUTHZ_COMPLETE/`.** Este doc mapeia o que muda em relação às Fases 1–3 e define a sequência de migration. Para schema completo, RPCs, RLS e endpoints, consultar os docs de referência acima.
+> **Contratos detalhados estão em `SUPABASE_AUTHZ_COMPLETE/`.** Este doc mapeia o que muda em relação às Fases 1–3 e define a sequência de migration. Para schema completo, RPCs, RLS e endpoints, consultar os docs de referência acima.
 
 ---
 
@@ -29,7 +29,7 @@ Isolamento de dados entre clientes. Cada tenant tem seus próprios projetos, eng
 
 ## Novas tabelas e alterações (resumo)
 
-Ver contratos completos em `AUTHZ_COMPLETE/AUTHZ_TENANT.md §Schema`.
+Ver contratos completos em `SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md §Schema`.
 
 ### Novas tabelas
 
@@ -53,7 +53,7 @@ Ver contratos completos em `AUTHZ_COMPLETE/AUTHZ_TENANT.md §Schema`.
 
 `reader=1 · editor=2 · manager=3 · owner=4` + `super_admin` global (não membro de tenant, mas bypassa tudo).
 
-Dois "ownerships" em cada tenant: `primary owner` (`tenants.owner_id`) e `billing owner` (`tenants.billing_id`). Ver `AUTHZ_COMPLETE/AUTHZ_PLAN.md §Decisões-chave`.
+Dois "ownerships" em cada tenant: `primary owner` (`tenants.owner_id`) e `billing owner` (`tenants.billing_id`). Ver `SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md §Decisões-chave`.
 
 ---
 
@@ -88,7 +88,7 @@ Tabelas `tenants`, `tenant_members`, `tenant_invites` têm `INSERT/UPDATE/DELETE
 | `revoke_invite` | Revoga convite. |
 | `accept_invite` | Aceita convite + cria membership atomicamente. |
 
-Contratos completos (parâmetros, erros, invariantes): `AUTHZ_COMPLETE/AUTHZ_TENANT.md §RPCs`.
+Contratos completos (parâmetros, erros, invariantes): `SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md §RPCs`.
 
 ---
 
@@ -110,7 +110,7 @@ Contratos completos (parâmetros, erros, invariantes): `AUTHZ_COMPLETE/AUTHZ_TEN
 
 ## Tipos server (`lib/auth.ts` evoluído)
 
-Ver `AUTHZ_COMPLETE/AUTHZ_TENANT.md §Server types` para o contrato completo.
+Ver `SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md §Server types` para o contrato completo.
 
 ```ts
 type AuthUser = {
@@ -138,13 +138,13 @@ type Auth = AuthUser | AuthTenantKey
 
 ## Criação de tenants: super admin only
 
-Onboarding é processo comercial controlado. User sem tenant → `/no-tenant`. Super admin sem tenant → `/admin/tenants/new`. Ver `AUTHZ_COMPLETE/AUTHZ_PLAN.md §Tenant creation é super-admin only`.
+Onboarding é processo comercial controlado. User sem tenant → `/no-tenant`. Super admin sem tenant → `/admin/tenants/new`. Ver `SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md §Tenant creation é super-admin only`.
 
 ---
 
 ## Migration one-off (dados existentes)
 
-Contratos completos em `AUTHZ_COMPLETE/AUTHZ_TENANT.md §Migration`. Resumo da sequência:
+Contratos completos em `SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md §Migration`. Resumo da sequência:
 
 1. Verificar engines sem `project_id` (Step 0).
 2. Setar super admin em `app_metadata` do primeiro user.
@@ -160,7 +160,7 @@ Contratos completos em `AUTHZ_COMPLETE/AUTHZ_TENANT.md §Migration`. Resumo da s
 
 ## Novos componentes UI
 
-Ver contratos completos em `AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`.
+Ver contratos completos em `SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md`.
 
 | Componente | Propósito |
 |---|---|
@@ -192,7 +192,7 @@ authz_rpcs.sql → rls.sql → migration_authz.sql
 
 ## Verificação (resumo)
 
-Ver checklist completa em `AUTHZ_COMPLETE/AUTHZ_PROGRESS.md §Critérios de sucesso globais`. Highlights:
+Ver checklist completa em `SUPABASE_AUTHZ_COMPLETE/AUTHZ_PROGRESS.md §Critérios de sucesso globais`. Highlights:
 
 - Isolamento: User A (tenant Acme) não vê dados do User B (tenant Foo).
 - Super admin acessa qualquer tenant; selector mostra todos com badge "admin".

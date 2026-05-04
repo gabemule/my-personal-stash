@@ -1,7 +1,7 @@
 # AUTHZ Incremental — API Keys (mínima, sem tenant)
 
 > Abordagem lean decidida após revisão do plano completo em
-> [`AUTHZ_COMPLETE/AUTHZ_PLAN.md`](../AUTHZ_COMPLETE/AUTHZ_PLAN.md).
+> [`SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md).
 >
 > **Motivação:** evitar o overhead de cookie auth (`getUser()` ~800ms) em chamadas
 > externas/M2M ao `/api/calc/*`, sem implementar multi-tenant agora.
@@ -136,7 +136,7 @@ e o handler de calc usa `tenantId` pra filtrar os engines.
 
 ## O que ainda está pendente do plano completo
 
-Ver [`AUTHZ_COMPLETE/AUTHZ_PROGRESS.md`](../AUTHZ_COMPLETE/AUTHZ_PROGRESS.md) para
+Ver [`SUPABASE_AUTHZ_COMPLETE/AUTHZ_PROGRESS.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_PROGRESS.md) para
 tracking completo. Resumo do que fica pendente:
 
 | Item | Quando fazer |

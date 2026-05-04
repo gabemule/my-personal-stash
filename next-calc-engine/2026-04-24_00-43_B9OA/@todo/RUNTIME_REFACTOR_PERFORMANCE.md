@@ -634,7 +634,7 @@ Escopo: `app/api/calc/[...segments]/route.ts`. Maior ganho de latência do app.
 - Declarar `export const runtime = "nodejs"` explicitamente em `app/api/calc/[...segments]/route.ts`. Cache `Map` module-scope **não funciona em edge** (cada invocação é um isolate novo).
 - Criar `lib/server/compiledCache.ts` — casa canônica:
   ```ts
-  import { compile, type CompiledEngine } from "@/lib/runtime"
+  import { compile, type CompiledEngine } from "@/libs/runtime"
 
   const compiledCache = new Map<string, CompiledEngine>()
 

@@ -1,6 +1,6 @@
 # AUTHZ Incremental — Audit Log (plantado · sem dependência de fase)
 
-> **Referência completa:** [`../AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md`](../AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md)
+> **Referência completa:** [`../SUPABASE_AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md`](../SUPABASE_AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md)
 
 > **Status: PLANTADO.** Não implementar agora. Este doc existe para registrar a decisão e o contrato mínimo. A implementação começa quando a primeira dor real aparecer.
 
