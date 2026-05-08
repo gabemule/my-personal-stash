@@ -2,6 +2,7 @@
   "id": "2026-05-08_23-01_Z_5P",
   "project": "next-calc-engine",
   "timestamp": "2026-05-08T23:01:14.536Z",
+  "updatedAt": "2026-05-08T23:01:52.992Z",
   "message": "some docs to wait refactor",
   "tags": [],
   "branch": "development",
@@ -22,8 +23,23 @@
       "name": ".clinerules",
       "size": 5140,
       "hash": "sha256:7de72cf72746"
+    },
+    {
+      "name": "docs/api-flow.md",
+      "size": 15622,
+      "hash": "sha256:2e6f51d2c71c"
+    },
+    {
+      "name": "libs/runtime/docs/DecimalFactory.md",
+      "size": 10210,
+      "hash": "sha256:19cc26324e53"
+    },
+    {
+      "name": "libs/runtime/docs/EngineState.md",
+      "size": 25275,
+      "hash": "sha256:2faafbce2b92"
     }
   ],
-  "totalSize": 35455,
+  "totalSize": 86562,
   "compressed": false
 }
