@@ -1,7 +1,7 @@
 # CONTEXT.md — Project Knowledge Base
 
 > Maintained by AI for context recovery between sessions.
-> Last updated: 2026-05-04
+> Last updated: 2026-05-08
 
 ## Stack & Infra
 
@@ -90,7 +90,23 @@ Project → Engine(s) → Calc execution
 - Soft-delete (disabled_at) for projects and engines
 - Bruno API testing collection with environments
 
-### Planned migrations (two parallel paths under study)
+### Execution Roadmap
+
+Active @todo items in planned execution order:
+
+| # | @todo | Size | Status | Dependencies |
+|---|-------|------|--------|-------------|
+| 1 | `RENAME_DELETED_AT` | 🟢 ~40 min | Not started | None |
+| 2 | `PUBLISHED_AT` | 🟡 ~2h | Not started | #1 |
+| 3 | `URL_DRIVEN_LOADING` | 🟡 ~2h | Not started | None |
+| 4 | `CACHE` | 🟡 ~3.5h | Not started | Benefits from #2 |
+| 5 | `ZOD-SSOT` | 🔴 ~6h | Not started | None (horizontal refactor — done after features stabilize) |
+| 6 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | Benefits from #5 |
+| 7 | `APP_BUILDER_REORGANIZING` | 🟢 ~1.5h | Not started | None |
+
+Standalone exploration docs (not sequenced): `RUNTIME_REFACTOR_BRANCHING`, `RUNTIME_REFACTOR_PERFORMANCE`
+
+### Planned migrations — deferred (two parallel paths under study)
 
 **Path A: Drizzle + Auth.js** (remove Supabase entirely)
 - `@todo/DRIZZLE-MIGRATION/` — Replace Supabase query builder with Drizzle ORM (direct Postgres TCP). Services-only change.

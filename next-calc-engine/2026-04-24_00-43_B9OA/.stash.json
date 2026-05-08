@@ -2,7 +2,7 @@
   "id": "2026-04-24_00-43_B9OA",
   "project": "next-calc-engine",
   "timestamp": "2026-04-24T03:43:48.360Z",
-  "updatedAt": "2026-05-08T21:24:43.621Z",
+  "updatedAt": "2026-05-08T22:59:36.653Z",
   "message": "@todo docs",
   "tags": [],
   "branch": "development",
@@ -16,8 +16,8 @@
     },
     {
       "name": "@todo/CONTEXT.md",
-      "size": 7465,
-      "hash": "sha256:5d6bdc8f8e92"
+      "size": 8239,
+      "hash": "sha256:622a79a7670b"
     },
     {
       "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
@@ -30,24 +30,14 @@
       "hash": "sha256:3af0c1fff7d2"
     },
     {
-      "name": "@todo/API_KEYS_PROJECT_SCOPE/PLAN.md",
-      "size": 3947,
-      "hash": "sha256:36a2f82fdf67"
+      "name": "@todo/CACHE/PLAN.md",
+      "size": 3127,
+      "hash": "sha256:b8e5c6826911"
     },
     {
-      "name": "@todo/API_KEYS_PROJECT_SCOPE/PROGRESS.md",
-      "size": 999,
-      "hash": "sha256:23c1c45b55d5"
-    },
-    {
-      "name": "@todo/DRIZZLE-MIGRATION/PLAN.md",
-      "size": 8279,
-      "hash": "sha256:314a736a3476"
-    },
-    {
-      "name": "@todo/DRIZZLE-MIGRATION/PROGRESS.md",
-      "size": 1123,
-      "hash": "sha256:79d783dae7c3"
+      "name": "@todo/CACHE/PROGRESS.md",
+      "size": 1201,
+      "hash": "sha256:6177620ad2be"
     },
     {
       "name": "@todo/AUTHJS-MIGRATION/PLAN.md",
@@ -60,14 +50,14 @@
       "hash": "sha256:ec504909b1e3"
     },
     {
-      "name": "@todo/PUBLISHED_AT/PLAN.md",
-      "size": 7849,
-      "hash": "sha256:7904c001296b"
+      "name": "@todo/API_KEYS_PROJECT_SCOPE/PLAN.md",
+      "size": 3947,
+      "hash": "sha256:36a2f82fdf67"
     },
     {
-      "name": "@todo/PUBLISHED_AT/PROGRESS.md",
-      "size": 2082,
-      "hash": "sha256:6c5c1f3aa9ca"
+      "name": "@todo/API_KEYS_PROJECT_SCOPE/PROGRESS.md",
+      "size": 999,
+      "hash": "sha256:23c1c45b55d5"
     },
     {
       "name": "@todo/AUTHJS_INCREMENTAL/PLAN.md",
@@ -78,6 +68,16 @@
       "name": "@todo/AUTHJS_INCREMENTAL/PROGRESS.md",
       "size": 1363,
       "hash": "sha256:67b00740bf91"
+    },
+    {
+      "name": "@todo/DRIZZLE-MIGRATION/PLAN.md",
+      "size": 8279,
+      "hash": "sha256:314a736a3476"
+    },
+    {
+      "name": "@todo/DRIZZLE-MIGRATION/PROGRESS.md",
+      "size": 1123,
+      "hash": "sha256:79d783dae7c3"
     },
     {
       "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_API_KEYS.md",
@@ -125,6 +125,16 @@
       "hash": "sha256:80a52cb56c94"
     },
     {
+      "name": "@todo/PUBLISHED_AT/PLAN.md",
+      "size": 7849,
+      "hash": "sha256:7904c001296b"
+    },
+    {
+      "name": "@todo/PUBLISHED_AT/PROGRESS.md",
+      "size": 2082,
+      "hash": "sha256:6c5c1f3aa9ca"
+    },
+    {
       "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/0_API_KEYS.md",
       "size": 4413,
       "hash": "sha256:c37bcb5fb509"
@@ -160,6 +170,16 @@
       "hash": "sha256:72d6d6b83363"
     },
     {
+      "name": "@todo/ZOD-SSOT/PLAN.md",
+      "size": 10602,
+      "hash": "sha256:a28df06adedf"
+    },
+    {
+      "name": "@todo/ZOD-SSOT/PROGRESS.md",
+      "size": 2459,
+      "hash": "sha256:7b01c6470c63"
+    },
+    {
       "name": "@todo/URL_DRIVEN_LOADING/PLAN.md",
       "size": 9347,
       "hash": "sha256:09ad3f32b881"
@@ -170,6 +190,6 @@
       "hash": "sha256:af39afb95027"
     }
   ],
-  "totalSize": 350121,
+  "totalSize": 368284,
   "compressed": false
 }
