@@ -1,7 +1,7 @@
 # CONTEXT.md — Project Knowledge Base
 
 > Maintained by AI for context recovery between sessions.
-> Last updated: 2026-05-08
+> Last updated: 2026-05-09 (ZOD-SSOT complete)
 
 ## Stack & Infra
 
@@ -35,6 +35,7 @@ Browser/M2M → proxy.ts (auth check) → route handler → service → Supabase
 - `libs/api-keys.ts` — API key generation (randomBytes) and SHA-256 hashing
 - `libs/sanitize.ts` — Name sanitization to `^[a-z][a-z0-9_]*$` format
 - `proxy.ts` — Auth middleware (NOT Next.js `middleware.ts`) — session renewal + Bearer bypass
+- `hooks/useRouteState.ts` — URL ↔ workspaceStore sync hook (engineId/projectId)
 - `stores/` — Zustand stores (engineStore, requestStore, workspaceStore)
 - `db/*.sql` — Schema, RLS policies, migrations
 - `docs/adr/` — Architecture Decision Records (001–009)
@@ -45,8 +46,8 @@ Browser/M2M → proxy.ts (auth check) → route handler → service → Supabase
 ```
 Project → Engine(s) → Calc execution
 ```
-- **Project:** Named container for engines. One active at a time (per scope). Has `is_active` flag.
-- **Engine:** Stores the full calc definition as JSONB (`EngineState`). One active per project. Has `is_active` flag.
+- **Project:** Named container for engines. Selection is client-only (Zustand `workspaceStore`). No `is_active` column.
+- **Engine:** Stores the full calc definition as JSONB (`EngineState`). One active per project. Has `is_active` flag. Publishing lifecycle: saved → published (immutable, `published_at` timestamp).
 - **EngineState:** `{ name, config, variables[], tables[], steps[] }`
   - `config`: precision, rounding mode, min/max clamping
   - `variables`: inputs (runtime-provided) or constants (engine-fixed). Each has id + name.
@@ -55,8 +56,8 @@ Project → Engine(s) → Calc execution
 - **Calc:** Executes engine with named inputs → remaps to ids → evaluates steps → returns named outputs
 
 ### DB schema (Supabase Postgres)
-- `projects`: id, name (unique), is_active, disabled_at, created_at
-- `engines`: id, name, engine (JSONB), is_active, project_id (nullable FK → projects), disabled_at, created_at, updated_at
+- `projects`: id, name (unique), deleted_at, created_at
+- `engines`: id, name, engine (JSONB), is_active, project_id (nullable FK → projects), published_at (nullable), deleted_at, created_at, updated_at
   - Unique constraint: `(name, project_id)`
 - `api_keys`: see `db/api_keys.sql`
 - RLS: permissive (`authenticated = full access`) — known gap, will be refined in AUTHZ migration
@@ -69,25 +70,31 @@ Project → Engine(s) → Calc execution
 
 - **Naming:** Names sanitized via `libs/sanitize.ts` on create/update (ADR 001)
 - **Tests:** `*.test.ts` colocated next to source files, vitest
-- **Soft-delete:** `disabled_at timestamptz` column — never hard-delete (ADR 004). Queries always filter `.is("disabled_at", null)`
+- **Soft-delete:** `deleted_at timestamptz` column — never hard-delete (ADR 004). Queries always filter `.is("deleted_at", null)`
 - **Services:** Accept optional `db?: DbClient` as last param. Custom error classes with `readonly code`. Structured logging.
-- **Routes:** Thin wrappers — validate input, call service, format response. JSDoc with `@query`, `@body`, `@returns`.
-- **Schemas:** Zod in `schemas/api.ts` are SSOT — derive types via `z.infer<>` (ADR 003)
+- **Routes:** Thin wrappers — `parseBody(req, Schema)` for Zod validation, call service, format response. JSDoc with `@query`, `@body`, `@returns`.
+- **Schemas:** Zod in `schemas/api.ts` are SSOT — derive types via `z.infer<>` (ADR 003). Store types in `stores/engineStore.ts` derived via indexed access on Zod-inferred row types.
+- **parseBody:** `libs/parseBody.ts` — shared helper for JSON parse + Zod validation in route handlers. Returns `{ data }` or `{ error: NextResponse }`.
+- **Runtime types:** All 17 types in `libs/runtime/types.ts` derived via `z.infer<>` from `libs/runtime/schema.ts`. No manual interfaces.
 - **Auth:** Dual auth — Supabase session (UI) + Bearer API key (M2M) (ADR 005)
-- **Activation:** Only one engine active per project, only one project active per scope. Activation deactivates siblings.
+- **Activation:** Only one engine active per project. Activation deactivates siblings. Only published engines can be activated.
+- **Publishing:** `published_at` timestamp on engines. Published = immutable (no edit, no delete, no unpublish). Error classes: `EngineImmutableError` (409), `EngineNotPublishedError` (422).
+- **URL-driven loading:** Builder/Calc use `?engineId` in URL (source of truth), Engines page uses `?projectId` (optional filter). `useRouteState` hook syncs URL ↔ workspaceStore. WorkspaceSelector is presentational (no own fetches). `engineStore` has granular loaders: `loadProjects()`, `loadEngines(projectId?)`, `loadEngineById(id)`.
+- **listEngines semantics:** `projectId: undefined` → all engines (no filter), `null` → orphans only, `string` → by project.
+- **Cache:** Only public-facing endpoints are cached (calc engine resolution, api-key validation). Internal CRUD routes hit DB directly. `"use cache"` directive with `cacheTag()`/`cacheLife()` for reads, `revalidateTag()` in service mutation functions for invalidation. Route handlers are cache-unaware. Tag constants in `libs/cache.ts`. Cached functions use `createServiceClient()` (no cookies). See `docs/api-flow.md` §6 for full details.
 
 ## Current State
 
 ### Working
 - Core calc engine (variables, tables, steps, conditions, expressions)
 - Projects CRUD (list, create, update, delete, activate)
-- Engines CRUD (list, create, update, delete, activate)
-- Calc execution (`/api/calc/[engineId]`) with name→id remap
+- Engines CRUD (list, create, update, delete, activate, publish)
+- Calc execution (`/api/calc/[engineId]` and `/api/calc/active?projectId=X`) with name→id remap
 - Schema endpoints (`/api/schema`, `/api/schemas/*`) — describe engine inputs
 - API keys (basic: generate, list, revoke)
 - Builder UI (visual engine editor)
 - Calc test UI (execute engines interactively)
-- Soft-delete (disabled_at) for projects and engines
+- Soft-delete (deleted_at) for projects and engines
 - Bruno API testing collection with environments
 
 ### Execution Roadmap
@@ -96,11 +103,11 @@ Active @todo items in planned execution order:
 
 | # | @todo | Size | Status | Dependencies |
 |---|-------|------|--------|-------------|
-| 1 | `RENAME_DELETED_AT` | 🟢 ~40 min | Not started | None |
-| 2 | `PUBLISHED_AT` | 🟡 ~2h | Not started | #1 |
-| 3 | `URL_DRIVEN_LOADING` | 🟡 ~2h | Not started | None |
-| 4 | `CACHE` | 🟡 ~3.5h | Not started | Benefits from #2 |
-| 5 | `ZOD-SSOT` | 🔴 ~6h | Not started | None (horizontal refactor — done after features stabilize) |
+| 1 | `RENAME_DELETED_AT` | 🟢 ~40 min | ✅ Complete | None |
+| 2 | `PUBLISHED_AT` | 🟡 ~2h | ✅ Complete (all 7 phases) | #1 |
+| 3 | `URL_DRIVEN_LOADING` | 🟡 ~2h | ✅ Complete | None |
+| 4 | `CACHE` | 🟡 ~3.5h | ✅ Complete | Benefits from #2 |
+| 5 | `ZOD-SSOT` | 🔴 ~6h | ✅ Complete | None (horizontal refactor — done after features stabilize) |
 | 6 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | Benefits from #5 |
 | 7 | `APP_BUILDER_REORGANIZING` | 🟢 ~1.5h | Not started | None |
 
@@ -124,19 +131,21 @@ Both paths implement the same business logic (roles, invites, tenant isolation).
 - **ADR 001** — Name sanitization: all names normalized to `^[a-z][a-z0-9_]*$`
 - **ADR 002** — Services layer: business logic lives in `services/`, not in route handlers
 - **ADR 003** — Zod schemas as SSOT: single source of truth for validation and types
-- **ADR 004** — Soft-delete: `disabled_at timestamptz`, never hard-delete
+- **ADR 004** — Soft-delete: `deleted_at timestamptz`, never hard-delete
 - **ADR 005** — Dual auth: Supabase session + Bearer API key, proxy.ts bypasses getUser() for calc routes with Bearer
 - **ADR 006** — Custom proxy instead of Next.js middleware: Supabase SSR cookie handling + Bearer bypass
 - **ADR 007** — Engine state as single JSONB column: atomic reads/writes, no normalized tables
 - **ADR 008** — Internal IDs, external names: runtime uses UUIDs, API uses human-friendly names
 - **ADR 009** — Decimal.js for arbitrary-precision arithmetic: exact decimal math for financial calculations
+- **ADR 010** — Engine publishing lifecycle: saved → published (immutable), activation guard, calc active endpoint
 
 ## Known Pitfalls
 
 - `engines.project_id` is **nullable** — legacy data. AUTHZ migration will make it NOT NULL after backfill.
 - RLS is **permissive** (`authenticated = full access`) — not a security design, known gap pending AUTHZ.
 - `proxy.ts` is **not** `middleware.ts` — intentional for Supabase SSR cookie handling pattern.
-- `disabled_at` (not `deleted_at`) is the soft-delete column name — engines and projects use this.
+- All three tables (`projects`, `engines`, `api_keys`) now use `deleted_at` for soft-delete — unified naming.
+- `projects` no longer has `is_active` — workspace selection is Zustand-only (`workspaceStore`).
 - `projects.name` has a **global unique constraint** — will change to tenant-scoped in AUTHZ migration.
 - Engine variables use **id internally** but **name externally** — calc service handles the remap via `remapInputsByName()`.
 - `core/` (builder state) and `libs/runtime/` (execution) are **separate concerns** — don't mix them.

@@ -57,9 +57,9 @@ Additionally, a "calc active" endpoint allows callers to execute calculations by
 
 ### Out of scope
 
-- UI changes (builder, engines page) — separate frontend feature
 - Semantic versioning (v1, v2...) — engine name is the differentiator for now
 - "Clone published engine to edit" flow — done manually via create
+- Status badge components (colored pills etc.) — plain text labels are enough for now
 
 ## Decisions
 
@@ -74,6 +74,10 @@ Additionally, a "calc active" endpoint allows callers to execute calculations by
 | Published engines cannot be soft-deleted | Preserves historical versions for contract recalculation |
 | Remove `is_active` from projects | "Active project" has no business meaning — workspace selection is a UI concern managed by Zustand. First project loaded on initial page load. |
 | `unstable_cache` with `revalidate: false` for published engines | Published engines are immutable — the JSONB never changes, so cache is semantically correct forever. Zero invalidation needed. Draft engines skip cache entirely (query direct to DB). Cache key prefix: `["published-engine-def"]`, tag: `engine:${engineId}` — allows surgical invalidation per engine if ever needed (e.g., emergency hotfix). |
+| DRAFT is a client-side concept only | DRAFT = builder has unsaved local changes (dirty). It never appears in `/engines` list — if it exists in DB, it's at least SAVED. |
+| Plain text labels, not colored badges | "DRAFT", "SAVED", "PUBLISHED" as text — no badge components needed. Keeps it simple. |
+| Confirmation modals for Save and Publish | Both destructive-ish actions get a modal: Save confirms overwrite, Publish warns about immutability. |
+| Published engines are read-only in builder | Builder disables all editing when engine is published. No save/publish buttons shown. |
 
 ## Phases
 
@@ -128,3 +132,50 @@ Additionally, a "calc active" endpoint allows callers to execute calculations by
 - `docs/adr/010-engine-publishing.md`
 - Update `@todo/CONTEXT.md`
 - Update `.clinerules`
+
+### Phase 7: Front-end — status labels + publish flow (~2h)
+
+#### Status model
+
+| Context | Visible states | How determined |
+|---------|---------------|----------------|
+| `/engines` list | `SAVED` / `PUBLISHED` | `publishedAt === null` → SAVED, else → PUBLISHED |
+| `/builder` | `DRAFT` / `SAVED` / `PUBLISHED` | DRAFT = dirty (unsaved local changes), SAVED = clean + `publishedAt === null`, PUBLISHED = `publishedAt !== null` |
+
+DRAFT never appears in `/engines` — if it exists in DB, it's at least SAVED.
+
+#### `/engines` list changes
+- `stores/engineStore.ts` — add `publishedAt` to `EngineRecord` type + `mapEngine()` helper
+- `app/engines/components/EnginesPanel/` — add status text per row ("SAVED" or "PUBLISHED")
+- Conditional actions per status:
+  - SAVED: [Edit] [Publish] [Delete]
+  - PUBLISHED: [Activate] (no edit, no delete)
+  - ACTIVE (published + active): [Deactivate]
+- `publishEngine()` action in `engineStore.ts` — calls `POST /api/engines/:id/publish`
+
+#### `/builder` changes
+- `app/builder/components/BuilderHeader/` — add text label showing current status (DRAFT / SAVED / PUBLISHED)
+- Existing asterisk `*` on engine name continues as dirty indicator
+- **Save button**: visible only when dirty (DRAFT state). Triggers confirmation modal before saving.
+- **Publish button**: visible only when SAVED (clean, not published). Triggers confirmation modal warning about immutability.
+- **Published engine in builder**: read-only mode — all editing disabled, no Save/Publish buttons shown.
+
+#### Confirmation modals
+- **Save Modal**: "Save engine `{name}`?" → [Cancel] [Save]
+- **Publish Modal**: "Publish engine `{name}`? After publishing, the engine becomes immutable and cannot be edited or deleted." → [Cancel] [Publish]
+
+#### Button visibility matrix (builder)
+
+```
+State      │ Label      │ Save btn   │ Publish btn │ Editable?
+───────────┼────────────┼────────────┼─────────────┼──────────
+DRAFT      │ DRAFT      │ ✅ visible  │ ❌ hidden    │ ✅ yes
+SAVED      │ SAVED      │ ❌ hidden   │ ✅ visible   │ ✅ yes
+PUBLISHED  │ PUBLISHED  │ ❌ hidden   │ ❌ hidden    │ ❌ read-only
+```
+
+#### Files touched
+- `stores/engineStore.ts` — `publishedAt` field + `publishEngine()` action
+- `app/engines/components/EnginesPanel/index.tsx` — status text + conditional actions
+- `app/builder/components/BuilderHeader/index.tsx` — status label + Save/Publish buttons with conditional visibility
+- `app/builder/components/EngineBuilder/index.tsx` — read-only guard for published engines, modal state for Save/Publish confirmations
