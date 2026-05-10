@@ -1,7 +1,7 @@
 # CONTEXT.md — Project Knowledge Base
 
 > Maintained by AI for context recovery between sessions.
-> Last updated: 2026-05-09 (ZOD-SSOT complete)
+> Last updated: 2026-05-10 (no-components convention)
 
 ## Stack & Infra
 
@@ -73,6 +73,7 @@ Project → Engine(s) → Calc execution
 - **Soft-delete:** `deleted_at timestamptz` column — never hard-delete (ADR 004). Queries always filter `.is("deleted_at", null)`
 - **Services:** Accept optional `db?: DbClient` as last param. Custom error classes with `readonly code`. Structured logging.
 - **Routes:** Thin wrappers — `parseBody(req, Schema)` for Zod validation, call service, format response. JSDoc with `@query`, `@body`, `@returns`.
+- **App folder structure:** No `components/` wrapper folders. Direct children of route folders use `_` prefix (Escola A). Deeper children are plain folders — the hierarchy is the namespace. E.g. `app/builder/_LeftContent/VariablesPanel/` not `app/builder/_LeftContent/components/VariablesPanel/`. Applies project-wide.
 - **Schemas:** Zod in `schemas/api.ts` are SSOT — derive types via `z.infer<>` (ADR 003). Store types in `stores/engineStore.ts` derived via indexed access on Zod-inferred row types.
 - **parseBody:** `libs/parseBody.ts` — shared helper for JSON parse + Zod validation in route handlers. Returns `{ data }` or `{ error: NextResponse }`.
 - **Runtime types:** All 17 types in `libs/runtime/types.ts` derived via `z.infer<>` from `libs/runtime/schema.ts`. No manual interfaces.
@@ -103,13 +104,12 @@ Active @todo items in planned execution order:
 
 | # | @todo | Size | Status | Dependencies |
 |---|-------|------|--------|-------------|
-| 1 | `RENAME_DELETED_AT` | 🟢 ~40 min | ✅ Complete | None |
-| 2 | `PUBLISHED_AT` | 🟡 ~2h | ✅ Complete (all 7 phases) | #1 |
-| 3 | `URL_DRIVEN_LOADING` | 🟡 ~2h | ✅ Complete | None |
-| 4 | `CACHE` | 🟡 ~3.5h | ✅ Complete | Benefits from #2 |
-| 5 | `ZOD-SSOT` | 🔴 ~6h | ✅ Complete | None (horizontal refactor — done after features stabilize) |
-| 6 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | Benefits from #5 |
-| 7 | `APP_BUILDER_REORGANIZING` | 🟢 ~1.5h | Not started | None |
+| 1 | `TYPE_SAFETY_REFINEMENTS` | 🟢 ~1h | Not started | None |
+| 2 | `APP_BUILDER_REORGANIZING` | 🟡 ~2.5h | Not started | None |
+| 3 | `STATE_MANAGEMENT_REFACTOR` | 🟡 ~3h | Not started | Benefits from #2 |
+| 4 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | None |
+
+Completed: `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`
 
 Standalone exploration docs (not sequenced): `RUNTIME_REFACTOR_BRANCHING`, `RUNTIME_REFACTOR_PERFORMANCE`
 

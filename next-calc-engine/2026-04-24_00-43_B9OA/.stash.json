@@ -2,7 +2,7 @@
   "id": "2026-04-24_00-43_B9OA",
   "project": "next-calc-engine",
   "timestamp": "2026-04-24T03:43:48.360Z",
-  "updatedAt": "2026-05-09T09:05:09.147Z",
+  "updatedAt": "2026-05-10T03:25:32.375Z",
   "message": "@todo docs",
   "tags": [],
   "branch": "development",
@@ -10,14 +10,9 @@
   "user": "gab@Macmini",
   "files": [
     {
-      "name": "@todo/APP_BUILDER_REORGANIZING.md",
-      "size": 23070,
-      "hash": "sha256:ec03c580c632"
-    },
-    {
       "name": "@todo/CONTEXT.md",
-      "size": 10271,
-      "hash": "sha256:4b9f24a9061d"
+      "size": 10457,
+      "hash": "sha256:1398671bc290"
     },
     {
       "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
@@ -30,6 +25,16 @@
       "hash": "sha256:3af0c1fff7d2"
     },
     {
+      "name": "@todo/APP_BUILDER_REORGANIZING/PLAN.md",
+      "size": 9425,
+      "hash": "sha256:e35335febac6"
+    },
+    {
+      "name": "@todo/APP_BUILDER_REORGANIZING/PROGRESS.md",
+      "size": 2435,
+      "hash": "sha256:af3c2c563c77"
+    },
+    {
       "name": "@todo/API_KEYS_PROJECT_SCOPE/PLAN.md",
       "size": 3947,
       "hash": "sha256:36a2f82fdf67"
@@ -38,21 +43,6 @@
       "name": "@todo/API_KEYS_PROJECT_SCOPE/PROGRESS.md",
       "size": 999,
       "hash": "sha256:23c1c45b55d5"
-    },
-    {
-      "name": "@todo/CACHE/CONTEXT.md",
-      "size": 2533,
-      "hash": "sha256:f6c334ce03b5"
-    },
-    {
-      "name": "@todo/CACHE/PLAN.md",
-      "size": 3127,
-      "hash": "sha256:b8e5c6826911"
-    },
-    {
-      "name": "@todo/CACHE/PROGRESS.md",
-      "size": 2397,
-      "hash": "sha256:58d5acc156ce"
     },
     {
       "name": "@todo/DRIZZLE-MIGRATION/PLAN.md",
@@ -73,6 +63,16 @@
       "name": "@todo/AUTHJS-MIGRATION/PROGRESS.md",
       "size": 1295,
       "hash": "sha256:ec504909b1e3"
+    },
+    {
+      "name": "@todo/STATE_MANAGEMENT_REFACTOR/PLAN.md",
+      "size": 4645,
+      "hash": "sha256:ae09bf683300"
+    },
+    {
+      "name": "@todo/STATE_MANAGEMENT_REFACTOR/PROGRESS.md",
+      "size": 1134,
+      "hash": "sha256:34d7a479bb4c"
     },
     {
       "name": "@todo/AUTHJS_INCREMENTAL/PLAN.md",
@@ -120,24 +120,14 @@
       "hash": "sha256:499716dd3b20"
     },
     {
-      "name": "@todo/PUBLISHED_AT/PLAN.md",
-      "size": 11199,
-      "hash": "sha256:eb76396abef0"
+      "name": "@todo/TYPE_SAFETY_REFINEMENTS/PLAN.md",
+      "size": 4725,
+      "hash": "sha256:3a1642340d97"
     },
     {
-      "name": "@todo/PUBLISHED_AT/PROGRESS.md",
-      "size": 3978,
-      "hash": "sha256:246c9127128d"
-    },
-    {
-      "name": "@todo/RENAME_DELETED_AT/PLAN.md",
-      "size": 3347,
-      "hash": "sha256:d4299178120e"
-    },
-    {
-      "name": "@todo/RENAME_DELETED_AT/PROGRESS.md",
-      "size": 1277,
-      "hash": "sha256:3ef666ff1b28"
+      "name": "@todo/TYPE_SAFETY_REFINEMENTS/PROGRESS.md",
+      "size": 1781,
+      "hash": "sha256:1d126a1fcade"
     },
     {
       "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/0_API_KEYS.md",
@@ -173,28 +163,8 @@
       "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/README.md",
       "size": 1704,
       "hash": "sha256:72d6d6b83363"
-    },
-    {
-      "name": "@todo/URL_DRIVEN_LOADING/PLAN.md",
-      "size": 9347,
-      "hash": "sha256:09ad3f32b881"
-    },
-    {
-      "name": "@todo/URL_DRIVEN_LOADING/PROGRESS.md",
-      "size": 1795,
-      "hash": "sha256:7fba03492a21"
-    },
-    {
-      "name": "@todo/ZOD-SSOT/PLAN.md",
-      "size": 10602,
-      "hash": "sha256:a28df06adedf"
-    },
-    {
-      "name": "@todo/ZOD-SSOT/PROGRESS.md",
-      "size": 3207,
-      "hash": "sha256:34ccd9fa147d"
     }
   ],
-  "totalSize": 380513,
+  "totalSize": 328965,
   "compressed": false
 }
