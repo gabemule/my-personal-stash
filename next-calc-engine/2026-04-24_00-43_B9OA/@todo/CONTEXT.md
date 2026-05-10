@@ -105,28 +105,32 @@ Active @todo items in planned execution order:
 
 | # | @todo | Size | Status | Dependencies |
 |---|-------|------|--------|-------------|
-| 1 | `TYPE_SAFETY_REFINEMENTS` | 🟢 ~1h | ✅ Complete | None |
-| 2 | `APP_BUILDER_REORGANIZING` | 🟡 ~2.5h | ✅ Complete | None |
-| 3 | `STATE_MANAGEMENT_REFACTOR` | 🟡 ~3h | Not started | Benefits from #2 |
-| 4 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | None |
-| 5 | `VARIABLE_VALIDATION` | 🔴 ~8h | Not started | None (benefits from #3 for Phase 2 UI) |
+| 1 | `STATE_MANAGEMENT_REFACTOR` | 🟡 ~3h | Not started | None |
+| 2 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | None |
+| 3 | `VARIABLE_VALIDATION` | 🔴 ~8h | Not started | None (benefits from #1 for Phase 2 UI) |
 
-Completed: `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`, `TYPE_SAFETY_REFINEMENTS`, `APP_BUILDER_REORGANIZING`
+Completed (archived): `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`, `TYPE_SAFETY_REFINEMENTS`, `APP_BUILDER_REORGANIZING`
 
-Standalone exploration docs (not sequenced): `RUNTIME_REFACTOR_BRANCHING`, `RUNTIME_REFACTOR_PERFORMANCE`
+### Planning Items (`@todo/_planning/`)
 
-### Planned migrations — deferred (two parallel paths under study)
+Items not in the active queue — long-term planning, research, and deferred decisions.
+
+**Migrations — two parallel paths under study:**
 
 **Path A: Drizzle + Auth.js** (remove Supabase entirely)
-- `@todo/DRIZZLE-MIGRATION/` — Replace Supabase query builder with Drizzle ORM (direct Postgres TCP). Services-only change.
-- `@todo/AUTHJS-MIGRATION/` — Replace Supabase Auth with Auth.js v5. Depends on Drizzle migration.
-- `@todo/AUTHJS_INCREMENTAL/` — RBAC, Invites, Settings, Tenant phases adapted for Auth.js + Drizzle stack.
+- `_planning/DRIZZLE-MIGRATION/` — Replace Supabase query builder with Drizzle ORM (direct Postgres TCP). Services-only change.
+- `_planning/AUTHJS-MIGRATION/` — Replace Supabase Auth with Auth.js v5. Depends on Drizzle migration.
+- `_planning/AUTHJS_INCREMENTAL/` — RBAC, Invites, Settings, Tenant phases adapted for Auth.js + Drizzle stack.
 
 **Path B: Stay on Supabase** (original plans)
-- `@todo/SUPABASE_AUTHZ_INCREMENTAL/` — RBAC, Invites, Settings, Tenant phases using Supabase Auth + RLS.
-- `@todo/SUPABASE_AUTHZ_COMPLETE/` — Full multi-tenant plan (reference architecture).
+- `_planning/SUPABASE_AUTHZ_INCREMENTAL/` — RBAC, Invites, Settings, Tenant phases using Supabase Auth + RLS.
+- `_planning/SUPABASE_AUTHZ_COMPLETE/` — Full multi-tenant plan (reference architecture).
 
 Both paths implement the same business logic (roles, invites, tenant isolation). Decision pending.
+
+**Research / exploration:**
+- `_planning/RUNTIME_REFACTOR_BRANCHING.md`
+- `_planning/RUNTIME_REFACTOR_PERFORMANCE.md`
 
 ## Active Decisions (ADRs)
 

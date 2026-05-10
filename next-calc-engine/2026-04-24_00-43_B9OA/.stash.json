@@ -2,7 +2,7 @@
   "id": "2026-04-24_00-43_B9OA",
   "project": "next-calc-engine",
   "timestamp": "2026-04-24T03:43:48.360Z",
-  "updatedAt": "2026-05-10T07:01:19.221Z",
+  "updatedAt": "2026-05-10T07:25:04.905Z",
   "message": "@todo docs",
   "tags": [],
   "branch": "development",
@@ -11,68 +11,18 @@
   "files": [
     {
       "name": "@todo/CONTEXT.md",
-      "size": 10831,
-      "hash": "sha256:db835b8df025"
+      "size": 10837,
+      "hash": "sha256:a597be49d57d"
     },
     {
-      "name": "@todo/RUNTIME_REFACTOR_BRANCHING.md",
-      "size": 39316,
-      "hash": "sha256:84486d204768"
+      "name": "@todo/VARIABLE_VALIDATION/PLAN.md",
+      "size": 8322,
+      "hash": "sha256:f6c34a457be4"
     },
     {
-      "name": "@todo/RUNTIME_REFACTOR_PERFORMANCE.md",
-      "size": 56697,
-      "hash": "sha256:3af0c1fff7d2"
-    },
-    {
-      "name": "@todo/API_KEYS_PROJECT_SCOPE/PLAN.md",
-      "size": 3947,
-      "hash": "sha256:36a2f82fdf67"
-    },
-    {
-      "name": "@todo/API_KEYS_PROJECT_SCOPE/PROGRESS.md",
-      "size": 999,
-      "hash": "sha256:23c1c45b55d5"
-    },
-    {
-      "name": "@todo/APP_BUILDER_REORGANIZING/PLAN.md",
-      "size": 9425,
-      "hash": "sha256:e35335febac6"
-    },
-    {
-      "name": "@todo/APP_BUILDER_REORGANIZING/PROGRESS.md",
-      "size": 3498,
-      "hash": "sha256:19be7c6d9589"
-    },
-    {
-      "name": "@todo/AUTHJS-MIGRATION/PLAN.md",
-      "size": 10787,
-      "hash": "sha256:25f944bd8da4"
-    },
-    {
-      "name": "@todo/AUTHJS-MIGRATION/PROGRESS.md",
-      "size": 1295,
-      "hash": "sha256:ec504909b1e3"
-    },
-    {
-      "name": "@todo/AUTHJS_INCREMENTAL/PLAN.md",
-      "size": 18365,
-      "hash": "sha256:07ecd0880215"
-    },
-    {
-      "name": "@todo/AUTHJS_INCREMENTAL/PROGRESS.md",
-      "size": 1363,
-      "hash": "sha256:67b00740bf91"
-    },
-    {
-      "name": "@todo/DRIZZLE-MIGRATION/PLAN.md",
-      "size": 8279,
-      "hash": "sha256:314a736a3476"
-    },
-    {
-      "name": "@todo/DRIZZLE-MIGRATION/PROGRESS.md",
-      "size": 1123,
-      "hash": "sha256:79d783dae7c3"
+      "name": "@todo/VARIABLE_VALIDATION/PROGRESS.md",
+      "size": 1300,
+      "hash": "sha256:9109b17dde19"
     },
     {
       "name": "@todo/HIDE_SUPABASE_URL/PLAN.md",
@@ -95,96 +45,126 @@
       "hash": "sha256:34d7a479bb4c"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_API_KEYS.md",
+      "name": "@todo/API_KEYS_PROJECT_SCOPE/PLAN.md",
+      "size": 3947,
+      "hash": "sha256:36a2f82fdf67"
+    },
+    {
+      "name": "@todo/API_KEYS_PROJECT_SCOPE/PROGRESS.md",
+      "size": 999,
+      "hash": "sha256:23c1c45b55d5"
+    },
+    {
+      "name": "@todo/_planning/RUNTIME_REFACTOR_BRANCHING.md",
+      "size": 39316,
+      "hash": "sha256:84486d204768"
+    },
+    {
+      "name": "@todo/_planning/RUNTIME_REFACTOR_PERFORMANCE.md",
+      "size": 56697,
+      "hash": "sha256:3af0c1fff7d2"
+    },
+    {
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_API_KEYS.md",
       "size": 12322,
       "hash": "sha256:8beed471d48c"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_AUDIT_LOG.md",
       "size": 6979,
       "hash": "sha256:32c2b49a9d94"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_INVITES.md",
       "size": 13605,
       "hash": "sha256:930a83f0630d"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_PLAN.md",
       "size": 9296,
       "hash": "sha256:c010526c16c9"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_PROGRESS.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_PROGRESS.md",
       "size": 13197,
       "hash": "sha256:b51b48293a83"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_RBAC_UI.md",
       "size": 20168,
       "hash": "sha256:d4073551c2e3"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_COMPLETE/AUTHZ_TENANT.md",
       "size": 30599,
       "hash": "sha256:499716dd3b20"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/0_API_KEYS.md",
+      "name": "@todo/_planning/AUTHJS-MIGRATION/PLAN.md",
+      "size": 10787,
+      "hash": "sha256:25f944bd8da4"
+    },
+    {
+      "name": "@todo/_planning/AUTHJS-MIGRATION/PROGRESS.md",
+      "size": 1295,
+      "hash": "sha256:ec504909b1e3"
+    },
+    {
+      "name": "@todo/_planning/AUTHJS_INCREMENTAL/PLAN.md",
+      "size": 18365,
+      "hash": "sha256:07ecd0880215"
+    },
+    {
+      "name": "@todo/_planning/AUTHJS_INCREMENTAL/PROGRESS.md",
+      "size": 1363,
+      "hash": "sha256:67b00740bf91"
+    },
+    {
+      "name": "@todo/_planning/DRIZZLE-MIGRATION/PLAN.md",
+      "size": 8279,
+      "hash": "sha256:314a736a3476"
+    },
+    {
+      "name": "@todo/_planning/DRIZZLE-MIGRATION/PROGRESS.md",
+      "size": 1123,
+      "hash": "sha256:79d783dae7c3"
+    },
+    {
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/0_API_KEYS.md",
       "size": 4413,
       "hash": "sha256:c37bcb5fb509"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/1_RBAC.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/1_RBAC.md",
       "size": 10095,
       "hash": "sha256:8830f3b050fd"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/2_INVITES.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/2_INVITES.md",
       "size": 8706,
       "hash": "sha256:f64440d900c3"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/3_SETTINGS.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/3_SETTINGS.md",
       "size": 7581,
       "hash": "sha256:91089e1b1b70"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/4_TENANT.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/4_TENANT.md",
       "size": 8634,
       "hash": "sha256:f38ff89a1e96"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/AUDIT_LOG.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/AUDIT_LOG.md",
       "size": 4893,
       "hash": "sha256:20b5711a8b2a"
     },
     {
-      "name": "@todo/SUPABASE_AUTHZ_INCREMENTAL/README.md",
+      "name": "@todo/_planning/SUPABASE_AUTHZ_INCREMENTAL/README.md",
       "size": 1704,
       "hash": "sha256:72d6d6b83363"
-    },
-    {
-      "name": "@todo/TYPE_SAFETY_REFINEMENTS/PLAN.md",
-      "size": 4725,
-      "hash": "sha256:3a1642340d97"
-    },
-    {
-      "name": "@todo/TYPE_SAFETY_REFINEMENTS/PROGRESS.md",
-      "size": 2521,
-      "hash": "sha256:fb1eccd15bb6"
-    },
-    {
-      "name": "@todo/VARIABLE_VALIDATION/PLAN.md",
-      "size": 8322,
-      "hash": "sha256:f6c34a457be4"
-    },
-    {
-      "name": "@todo/VARIABLE_VALIDATION/PROGRESS.md",
-      "size": 1300,
-      "hash": "sha256:9109b17dde19"
     }
   ],
-  "totalSize": 343556,
+  "totalSize": 323393,
   "compressed": false
 }
