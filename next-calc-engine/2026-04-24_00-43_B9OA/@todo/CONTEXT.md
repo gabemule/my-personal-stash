@@ -1,7 +1,7 @@
 # CONTEXT.md — Project Knowledge Base
 
 > Maintained by AI for context recovery between sessions.
-> Last updated: 2026-05-10 (no-components convention)
+> Last updated: 2026-05-10 (APP_BUILDER_REORGANIZING complete)
 
 ## Stack & Infra
 
@@ -71,7 +71,7 @@ Project → Engine(s) → Calc execution
 - **Naming:** Names sanitized via `libs/sanitize.ts` on create/update (ADR 001)
 - **Tests:** `*.test.ts` colocated next to source files, vitest
 - **Soft-delete:** `deleted_at timestamptz` column — never hard-delete (ADR 004). Queries always filter `.is("deleted_at", null)`
-- **Services:** Accept optional `db?: DbClient` as last param. Custom error classes with `readonly code`. Structured logging.
+- **Services:** Accept optional `db?: DbClient` as last param. Custom error classes with `readonly code`. Structured logging. Shared `NotFoundError` in `services/errors.ts` — services throw, route handlers catch via `instanceof`. `ERROR_CODES` constant centralises external error codes (e.g. Supabase PGRST116).
 - **Routes:** Thin wrappers — `parseBody(req, Schema)` for Zod validation, call service, format response. JSDoc with `@query`, `@body`, `@returns`.
 - **App folder structure:** No `components/` wrapper folders. Direct children of route folders use `_` prefix (Escola A). Deeper children are plain folders — the hierarchy is the namespace. E.g. `app/builder/_LeftContent/VariablesPanel/` not `app/builder/_LeftContent/components/VariablesPanel/`. Applies project-wide.
 - **Schemas:** Zod in `schemas/api.ts` are SSOT — derive types via `z.infer<>` (ADR 003). Store types in `stores/engineStore.ts` derived via indexed access on Zod-inferred row types.
@@ -83,6 +83,7 @@ Project → Engine(s) → Calc execution
 - **URL-driven loading:** Builder/Calc use `?engineId` in URL (source of truth), Engines page uses `?projectId` (optional filter). `useRouteState` hook syncs URL ↔ workspaceStore. WorkspaceSelector is presentational (no own fetches). `engineStore` has granular loaders: `loadProjects()`, `loadEngines(projectId?)`, `loadEngineById(id)`.
 - **listEngines semantics:** `projectId: undefined` → all engines (no filter), `null` → orphans only, `string` → by project.
 - **Cache:** Only public-facing endpoints are cached (calc engine resolution, api-key validation). Internal CRUD routes hit DB directly. `"use cache"` directive with `cacheTag()`/`cacheLife()` for reads, `revalidateTag()` in service mutation functions for invalidation. Route handlers are cache-unaware. Tag constants in `libs/cache.ts`. Cached functions use `createServiceClient()` (no cookies). See `docs/api-flow.md` §6 for full details.
+- **Env vars:** No Supabase variables use `NEXT_PUBLIC_` prefix — all access is server-side. Code reads `SUPABASE_URL` with fallback `?? NEXT_PUBLIC_SUPABASE_URL` during infra migration. After infra update, fallback will be removed.
 
 ## Current State
 
@@ -104,12 +105,13 @@ Active @todo items in planned execution order:
 
 | # | @todo | Size | Status | Dependencies |
 |---|-------|------|--------|-------------|
-| 1 | `TYPE_SAFETY_REFINEMENTS` | 🟢 ~1h | Not started | None |
-| 2 | `APP_BUILDER_REORGANIZING` | 🟡 ~2.5h | Not started | None |
+| 1 | `TYPE_SAFETY_REFINEMENTS` | 🟢 ~1h | ✅ Complete | None |
+| 2 | `APP_BUILDER_REORGANIZING` | 🟡 ~2.5h | ✅ Complete | None |
 | 3 | `STATE_MANAGEMENT_REFACTOR` | 🟡 ~3h | Not started | Benefits from #2 |
 | 4 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | None |
+| 5 | `VARIABLE_VALIDATION` | 🔴 ~8h | Not started | None (benefits from #3 for Phase 2 UI) |
 
-Completed: `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`
+Completed: `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`, `TYPE_SAFETY_REFINEMENTS`, `APP_BUILDER_REORGANIZING`
 
 Standalone exploration docs (not sequenced): `RUNTIME_REFACTOR_BRANCHING`, `RUNTIME_REFACTOR_PERFORMANCE`
 
@@ -144,8 +146,6 @@ Both paths implement the same business logic (roles, invites, tenant isolation).
 - `engines.project_id` is **nullable** — legacy data. AUTHZ migration will make it NOT NULL after backfill.
 - RLS is **permissive** (`authenticated = full access`) — not a security design, known gap pending AUTHZ.
 - `proxy.ts` is **not** `middleware.ts` — intentional for Supabase SSR cookie handling pattern.
-- All three tables (`projects`, `engines`, `api_keys`) now use `deleted_at` for soft-delete — unified naming.
-- `projects` no longer has `is_active` — workspace selection is Zustand-only (`workspaceStore`).
 - `projects.name` has a **global unique constraint** — will change to tenant-scoped in AUTHZ migration.
 - Engine variables use **id internally** but **name externally** — calc service handles the remap via `remapInputsByName()`.
 - `core/` (builder state) and `libs/runtime/` (execution) are **separate concerns** — don't mix them.
