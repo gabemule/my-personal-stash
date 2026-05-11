@@ -1,0 +1,27 @@
+{
+  "id": "2026-05-11_23-39_Aglq",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-11T23:39:49.082Z",
+  "message": "docs: planning complete — PLAN.md, PROGRESS.md, CONTEXT.md finalized",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "@todo/CONTEXT.md",
+      "size": 5595,
+      "hash": "sha256:e9a472c58339"
+    },
+    {
+      "name": "@todo/workbuddy/PLAN.md",
+      "size": 10961,
+      "hash": "sha256:c0908dfab5f7"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 3209,
+      "hash": "sha256:209f5b6af083"
+    }
+  ],
+  "totalSize": 19765,
+  "compressed": false
+}
