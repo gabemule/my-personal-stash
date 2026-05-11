@@ -1,0 +1,117 @@
+{
+  "id": "2026-05-11_23-48_hboN",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-11T23:48:39.368Z",
+  "message": "feat: fase 1 complete — raw/, wiki/, config/, FUTURE.md, .gitignore",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": ".gitignore",
+      "size": 355,
+      "hash": "sha256:59a4127a6e5f"
+    },
+    {
+      "name": "FUTURE.md",
+      "size": 1034,
+      "hash": "sha256:2d9613de492a"
+    },
+    {
+      "name": "raw/config.json",
+      "size": 800,
+      "hash": "sha256:620d0edffafb"
+    },
+    {
+      "name": "raw/eao/config.json",
+      "size": 134,
+      "hash": "sha256:da87aa21a8c4"
+    },
+    {
+      "name": "raw/garantias/config.json",
+      "size": 138,
+      "hash": "sha256:8dce5a57eb26"
+    },
+    {
+      "name": "raw/novos-produtos/config.json",
+      "size": 153,
+      "hash": "sha256:ec6f78004026"
+    },
+    {
+      "name": "raw/general/config.json",
+      "size": 122,
+      "hash": "sha256:fe34f67cbea8"
+    },
+    {
+      "name": "config/app.json",
+      "size": 246,
+      "hash": "sha256:b981200bdbf0"
+    },
+    {
+      "name": "config/prompts/ingest.md",
+      "size": 1846,
+      "hash": "sha256:2a7061fe5bb2"
+    },
+    {
+      "name": "config/prompts/re-ingest.md",
+      "size": 1547,
+      "hash": "sha256:d5708c07ef97"
+    },
+    {
+      "name": "config/prompts/query.md",
+      "size": 1592,
+      "hash": "sha256:fb90e3f4284b"
+    },
+    {
+      "name": "config/prompts/lint.md",
+      "size": 1503,
+      "hash": "sha256:304ba6bc4168"
+    },
+    {
+      "name": "config/templates/transcription.md",
+      "size": 446,
+      "hash": "sha256:714bc822c1cb"
+    },
+    {
+      "name": "config/templates/doc.md",
+      "size": 319,
+      "hash": "sha256:0d4f7b3f4801"
+    },
+    {
+      "name": "config/templates/note.md",
+      "size": 200,
+      "hash": "sha256:ef9e0c10498e"
+    },
+    {
+      "name": "wiki/index.md",
+      "size": 752,
+      "hash": "sha256:9c1f967ac2f0"
+    },
+    {
+      "name": "wiki/overview.md",
+      "size": 615,
+      "hash": "sha256:94df4d366301"
+    },
+    {
+      "name": "wiki/log.jsonl",
+      "size": 0,
+      "hash": "sha256:e3b0c44298fc"
+    },
+    {
+      "name": "@todo/CONTEXT.md",
+      "size": 5567,
+      "hash": "sha256:4fb7a6e4ba20"
+    },
+    {
+      "name": "@todo/workbuddy/PLAN.md",
+      "size": 10962,
+      "hash": "sha256:f0d8a41822c0"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 3311,
+      "hash": "sha256:78cff30c36b7"
+    }
+  ],
+  "totalSize": 31642,
+  "compressed": false
+}

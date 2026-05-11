@@ -1,0 +1,15 @@
+{
+  "llm": {
+    "provider": "claude-code",
+    "model": "claude-opus-4-5"
+  },
+  "paths": {
+    "raw": "../raw",
+    "wiki": "../wiki",
+    "prompts": "./prompts",
+    "templates": "./templates"
+  },
+  "ingest": {
+    "autoProcess": false
+  }
+}
