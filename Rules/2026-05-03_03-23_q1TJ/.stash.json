@@ -2,9 +2,10 @@
   "id": "2026-05-03_03-23_q1TJ",
   "project": "Rules",
   "timestamp": "2026-05-03T03:23:13.156Z",
+  "updatedAt": "2026-05-11T23:31:31.290Z",
   "message": "Global Cline Rules",
   "tags": [],
-  "user": "gab@Macmini",
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
   "files": [
     {
       "name": "adr_discipline.md",
@@ -25,8 +26,13 @@
       "name": "karpathy_behavioral_guidelines.md",
       "size": 2637,
       "hash": "sha256:2e24db6271c1"
+    },
+    {
+      "name": "pstash_use.md",
+      "size": 2519,
+      "hash": "sha256:5b81fe968296"
     }
   ],
-  "totalSize": 9661,
+  "totalSize": 12180,
   "compressed": false
 }
