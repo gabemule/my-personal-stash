@@ -1,0 +1,32 @@
+{
+  "id": "2026-05-12_00-18_0qBa",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T00:18:50.357Z",
+  "message": "feat: fase 3 complete — all API routes (raw, wiki, git, ingest, reingest, chat stubs)",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/api/ingest/route.ts",
+      "size": 1166,
+      "hash": "sha256:a387a4239e00"
+    },
+    {
+      "name": "ui/app/api/reingest/route.ts",
+      "size": 856,
+      "hash": "sha256:78acb65a408c"
+    },
+    {
+      "name": "ui/app/api/chat/route.ts",
+      "size": 936,
+      "hash": "sha256:5e6abaf91d20"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 3311,
+      "hash": "sha256:78cff30c36b7"
+    }
+  ],
+  "totalSize": 6269,
+  "compressed": false
+}
