@@ -1,0 +1,17 @@
+{
+  "id": "2026-05-12_02-03_zMIi",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T02:03:45.505Z",
+  "message": "fix: listRawFiles now walks subdirectories recursively",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/lib/fs.ts",
+      "size": 7476,
+      "hash": "sha256:2def877532e6"
+    }
+  ],
+  "totalSize": 7476,
+  "compressed": false
+}
