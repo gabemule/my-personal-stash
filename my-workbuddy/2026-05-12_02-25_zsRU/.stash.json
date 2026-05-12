@@ -1,0 +1,17 @@
+{
+  "id": "2026-05-12_02-25_zsRU",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T02:25:26.295Z",
+  "message": "feat: auto-update index.md and overview.md after ingest",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/api/ingest/process/route.ts",
+      "size": 7134,
+      "hash": "sha256:9b0ba8c41c9b"
+    }
+  ],
+  "totalSize": 7134,
+  "compressed": false
+}
