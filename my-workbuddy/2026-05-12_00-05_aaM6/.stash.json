@@ -1,0 +1,52 @@
+{
+  "id": "2026-05-12_00-05_aaM6",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T00:05:04.613Z",
+  "message": "feat: fase 2 complete — Next.js 16 + shadcn/ui + sidebar layout + 5 pages",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/layout.tsx",
+      "size": 1204,
+      "hash": "sha256:da35ffbe8e78"
+    },
+    {
+      "name": "ui/app/page.tsx",
+      "size": 3007,
+      "hash": "sha256:aaeb3cbb4ec9"
+    },
+    {
+      "name": "ui/app/ingest/page.tsx",
+      "size": 481,
+      "hash": "sha256:db890293beac"
+    },
+    {
+      "name": "ui/app/chat/page.tsx",
+      "size": 478,
+      "hash": "sha256:c50552b1ab02"
+    },
+    {
+      "name": "ui/app/wiki/page.tsx",
+      "size": 463,
+      "hash": "sha256:d5ca541967fd"
+    },
+    {
+      "name": "ui/app/git/page.tsx",
+      "size": 459,
+      "hash": "sha256:f1b5f3ffa812"
+    },
+    {
+      "name": "ui/components/app-sidebar.tsx",
+      "size": 2292,
+      "hash": "sha256:da900f8dc263"
+    },
+    {
+      "name": "ui/.env.example",
+      "size": 291,
+      "hash": "sha256:520659abcf2a"
+    }
+  ],
+  "totalSize": 8675,
+  "compressed": false
+}
