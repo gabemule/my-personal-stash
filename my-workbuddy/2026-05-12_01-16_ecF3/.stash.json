@@ -1,0 +1,52 @@
+{
+  "id": "2026-05-12_01-16_ecF3",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T01:16:46.777Z",
+  "message": "feat: add-file/ingest/lint as separate sidebar items + api/lint + api/raw?files=true",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/components/app-sidebar.tsx",
+      "size": 2464,
+      "hash": "sha256:0099348e7e88"
+    },
+    {
+      "name": "ui/app/add-file/page.tsx",
+      "size": 8424,
+      "hash": "sha256:ad00c8154f29"
+    },
+    {
+      "name": "ui/app/ingest/page.tsx",
+      "size": 9885,
+      "hash": "sha256:0f0be8db0e6b"
+    },
+    {
+      "name": "ui/app/lint/page.tsx",
+      "size": 5545,
+      "hash": "sha256:7634143c1f8f"
+    },
+    {
+      "name": "ui/app/api/lint/route.ts",
+      "size": 3531,
+      "hash": "sha256:8b3f34647ee1"
+    },
+    {
+      "name": "ui/app/api/raw/route.ts",
+      "size": 1780,
+      "hash": "sha256:83ef5eb5e681"
+    },
+    {
+      "name": "@todo/CONTEXT.md",
+      "size": 5897,
+      "hash": "sha256:609491306c46"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 5738,
+      "hash": "sha256:45e95e730991"
+    }
+  ],
+  "totalSize": 43264,
+  "compressed": false
+}
