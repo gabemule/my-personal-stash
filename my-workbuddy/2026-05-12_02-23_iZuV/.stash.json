@@ -1,0 +1,22 @@
+{
+  "id": "2026-05-12_02-23_iZuV",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T02:23:29.579Z",
+  "message": "fix: ingest parser uses <<<FILE_START/END>>> delimiters to avoid YAML frontmatter conflict",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/api/ingest/process/route.ts",
+      "size": 4264,
+      "hash": "sha256:beab63b34bfd"
+    },
+    {
+      "name": "config/prompts/ingest.md",
+      "size": 1870,
+      "hash": "sha256:2bbc6bca0e53"
+    }
+  ],
+  "totalSize": 6134,
+  "compressed": false
+}
