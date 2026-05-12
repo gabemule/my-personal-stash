@@ -1,0 +1,77 @@
+{
+  "id": "2026-05-12_00-56_0KI-",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T00:56:33.816Z",
+  "message": "feat: fases 4+5 complete — UI pages, LLM adapter, streaming SSE, chat, ingest/process, reingest",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/page.tsx",
+      "size": 3975,
+      "hash": "sha256:728b0c4386df"
+    },
+    {
+      "name": "ui/app/ingest/page.tsx",
+      "size": 8218,
+      "hash": "sha256:43e652700231"
+    },
+    {
+      "name": "ui/app/chat/page.tsx",
+      "size": 6859,
+      "hash": "sha256:7d32ca55b13f"
+    },
+    {
+      "name": "ui/app/wiki/page.tsx",
+      "size": 2779,
+      "hash": "sha256:503adfa9aea1"
+    },
+    {
+      "name": "ui/app/git/page.tsx",
+      "size": 6972,
+      "hash": "sha256:18c107c3d35f"
+    },
+    {
+      "name": "ui/app/api/log/route.ts",
+      "size": 520,
+      "hash": "sha256:b362e4f97950"
+    },
+    {
+      "name": "ui/app/api/ingest/process/route.ts",
+      "size": 4242,
+      "hash": "sha256:6a45999ac898"
+    },
+    {
+      "name": "ui/app/api/reingest/route.ts",
+      "size": 4689,
+      "hash": "sha256:60f9440311a9"
+    },
+    {
+      "name": "ui/app/api/chat/route.ts",
+      "size": 2925,
+      "hash": "sha256:a34a62b9fb2e"
+    },
+    {
+      "name": "ui/lib/llm/types.ts",
+      "size": 669,
+      "hash": "sha256:596c68562dcf"
+    },
+    {
+      "name": "ui/lib/llm/claude.adapter.ts",
+      "size": 1709,
+      "hash": "sha256:3fa072c76c5e"
+    },
+    {
+      "name": "ui/lib/llm/factory.ts",
+      "size": 470,
+      "hash": "sha256:97c433bf927f"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 4490,
+      "hash": "sha256:738ae05976ed"
+    }
+  ],
+  "totalSize": 48517,
+  "compressed": false
+}
