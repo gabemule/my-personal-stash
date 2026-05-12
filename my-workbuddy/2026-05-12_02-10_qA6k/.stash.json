@@ -1,0 +1,17 @@
+{
+  "id": "2026-05-12_02-10_qA6k",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T02:10:57.239Z",
+  "message": "feat: ingest page shows ingested/new badge per file",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/ingest/page.tsx",
+      "size": 11158,
+      "hash": "sha256:2e2a6134071d"
+    }
+  ],
+  "totalSize": 11158,
+  "compressed": false
+}
