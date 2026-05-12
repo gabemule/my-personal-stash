@@ -1,0 +1,27 @@
+{
+  "id": "2026-05-12_01-49_R6bO",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T01:49:14.148Z",
+  "message": "style: swap fonts to Inter + JetBrains Mono",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/layout.tsx",
+      "size": 1307,
+      "hash": "sha256:8af14622fbdf"
+    },
+    {
+      "name": "ui/app/globals.css",
+      "size": 4298,
+      "hash": "sha256:499d1d706831"
+    },
+    {
+      "name": "ui/app/page.tsx",
+      "size": 4840,
+      "hash": "sha256:657cd22274d4"
+    }
+  ],
+  "totalSize": 10445,
+  "compressed": false
+}
