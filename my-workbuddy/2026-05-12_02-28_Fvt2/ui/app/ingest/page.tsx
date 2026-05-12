@@ -31,6 +31,7 @@ export default function IngestPage() {
   const [isCommitting, setIsCommitting] = useState(false);
   const [processedPaths, setProcessedPaths] = useState<string[]>([]);
   const [ingestedPaths, setIngestedPaths] = useState<Set<string>>(new Set());
+  const [ingestDates, setIngestDates] = useState<Map<string, string>>(new Map());
   const logRef = useRef<HTMLPreElement>(null);
 
   // Auto-scroll log to bottom when new content arrives
@@ -64,13 +65,18 @@ export default function IngestPage() {
       ].filter((p: string) => p.startsWith("raw/") && p.endsWith(".md")));
       setStagedPaths(staged);
 
-      // Build set of paths that have been ingested (from log)
-      const ingested = new Set<string>(
-        (logData.entries ?? [])
-          .filter((e: { type: string }) => e.type === "ingest")
-          .map((e: { source: string }) => e.source)
-      );
-      setIngestedPaths(ingested);
+      // Build map of path → most recent ingest date (from log)
+      const ingestDates = new Map<string, string>();
+      for (const e of (logData.entries ?? []) as { type: string; source: string; date: string }[]) {
+        if (e.type === "ingest" && e.source) {
+          const existing = ingestDates.get(e.source);
+          if (!existing || e.date > existing) {
+            ingestDates.set(e.source, e.date);
+          }
+        }
+      }
+      setIngestedPaths(new Set(ingestDates.keys()));
+      setIngestDates(ingestDates);
     } catch {
       toast.error("Failed to load files");
     } finally {
@@ -284,7 +290,12 @@ export default function IngestPage() {
                     {file.space} / {file.category}
                   </p>
                 </div>
-                <div className="flex gap-1.5 shrink-0">
+                <div className="flex gap-1.5 shrink-0 items-center">
+                  {ingestedPaths.has(file.path) && (
+                    <span className="text-xs text-muted-foreground tabular-nums">
+                      {ingestDates.get(file.path)}
+                    </span>
+                  )}
                   {ingestedPaths.has(file.path) ? (
                     <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
                       ingested
