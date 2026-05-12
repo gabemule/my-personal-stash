@@ -1,0 +1,42 @@
+{
+  "id": "2026-05-12_00-17_zMxz",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T00:17:58.913Z",
+  "message": "feat: fase 3 partial — lib/config, lib/fs, lib/git, api/raw, api/wiki, api/git",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/lib/config.ts",
+      "size": 891,
+      "hash": "sha256:cbb9e5b0a91e"
+    },
+    {
+      "name": "ui/lib/fs.ts",
+      "size": 7017,
+      "hash": "sha256:abaf101d73b8"
+    },
+    {
+      "name": "ui/lib/git.ts",
+      "size": 2147,
+      "hash": "sha256:0a8989eaf9ba"
+    },
+    {
+      "name": "ui/app/api/raw/route.ts",
+      "size": 884,
+      "hash": "sha256:ac44c3aff133"
+    },
+    {
+      "name": "ui/app/api/wiki/route.ts",
+      "size": 884,
+      "hash": "sha256:b8d4592e263d"
+    },
+    {
+      "name": "ui/app/api/git/route.ts",
+      "size": 1878,
+      "hash": "sha256:c42c0484de0a"
+    }
+  ],
+  "totalSize": 13701,
+  "compressed": false
+}
