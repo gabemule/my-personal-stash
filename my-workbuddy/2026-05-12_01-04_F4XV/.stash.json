@@ -1,0 +1,42 @@
+{
+  "id": "2026-05-12_01-04_F4XV",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T01:04:09.394Z",
+  "message": "feat: fase 6 complete — dashboard stats reais, chat multi-turn, toasts, sonner",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/layout.tsx",
+      "size": 1309,
+      "hash": "sha256:16e3f09a7f10"
+    },
+    {
+      "name": "ui/app/page.tsx",
+      "size": 4852,
+      "hash": "sha256:68f3a5857a84"
+    },
+    {
+      "name": "ui/app/ingest/page.tsx",
+      "size": 7852,
+      "hash": "sha256:92910fd12c5f"
+    },
+    {
+      "name": "ui/app/chat/page.tsx",
+      "size": 7778,
+      "hash": "sha256:50a59f632f23"
+    },
+    {
+      "name": "ui/app/api/chat/route.ts",
+      "size": 3486,
+      "hash": "sha256:84f492580921"
+    },
+    {
+      "name": "@todo/workbuddy/PROGRESS.md",
+      "size": 5063,
+      "hash": "sha256:1c65406cf7cb"
+    }
+  ],
+  "totalSize": 30340,
+  "compressed": false
+}
