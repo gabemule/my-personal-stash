@@ -1,0 +1,32 @@
+{
+  "id": "2026-05-12_01-53_WICC",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T01:53:04.298Z",
+  "message": "style: add @tailwindcss/typography for markdown rendering + dark mode + Inter/JetBrains fonts",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/globals.css",
+      "size": 4333,
+      "hash": "sha256:6d8291f4f95f"
+    },
+    {
+      "name": "ui/app/layout.tsx",
+      "size": 1312,
+      "hash": "sha256:ce3627c8122b"
+    },
+    {
+      "name": "ui/package.json",
+      "size": 1052,
+      "hash": "sha256:bcc2342c13bd"
+    },
+    {
+      "name": "ui/package-lock.json",
+      "size": 420784,
+      "hash": "sha256:a32db9434f58"
+    }
+  ],
+  "totalSize": 427481,
+  "compressed": false
+}
