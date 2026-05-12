@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "name": "docs",
+      "label": "Documentation",
+      "description": "Official documentation, specs, and final deliverables",
+      "relevance": 3
+    },
+    {
+      "name": "decisions",
+      "label": "Decisions",
+      "description": "Recorded decisions (lightweight ADRs)",
+      "relevance": 3
+    },
+    {
+      "name": "transcriptions",
+      "label": "Transcriptions",
+      "description": "Meeting transcriptions and recordings",
+      "relevance": 2
+    },
+    {
+      "name": "people",
+      "label": "People",
+      "description": "Context about team members and stakeholders",
+      "relevance": 2
+    },
+    {
+      "name": "notes",
+      "label": "Notes",
+      "description": "Free-form notes, drafts, and brainstorms",
+      "relevance": 1
+    }
+  ]
+}
