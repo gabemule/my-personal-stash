@@ -1,0 +1,17 @@
+{
+  "id": "2026-05-12_02-28_Fvt2",
+  "project": "my-workbuddy",
+  "timestamp": "2026-05-12T02:28:49.190Z",
+  "message": "fix: remove unused imports and params in ingest route",
+  "tags": [],
+  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "files": [
+    {
+      "name": "ui/app/api/ingest/process/route.ts",
+      "size": 7122,
+      "hash": "sha256:a5fdab44a0de"
+    }
+  ],
+  "totalSize": 7122,
+  "compressed": false
+}
