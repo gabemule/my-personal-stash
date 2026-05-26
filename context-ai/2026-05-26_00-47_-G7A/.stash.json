@@ -2,6 +2,7 @@
   "id": "2026-05-26_00-47_-G7A",
   "project": "context-ai",
   "timestamp": "2026-05-26T00:47:13.531Z",
+  "updatedAt": "2026-05-26T01:14:21.241Z",
   "message": "todo context ai files",
   "tags": [],
   "branch": "main",
@@ -10,8 +11,8 @@
   "files": [
     {
       "name": "@todo/CONTEXT.md",
-      "size": 5138,
-      "hash": "sha256:c60574f5cfaf"
+      "size": 5346,
+      "hash": "sha256:762c312e1374"
     },
     {
       "name": "@todo/CI-CD-HOOKS/PLAN.md",
@@ -34,19 +35,19 @@
       "hash": "sha256:bee7ca1597d6"
     },
     {
-      "name": "@todo/REMOVE-DEAD-CODE/PLAN.md",
-      "size": 1382,
-      "hash": "sha256:e52ff1467613"
+      "name": "@todo/DOCS-CLEANUP/PLAN.md",
+      "size": 2644,
+      "hash": "sha256:e96e24f77102"
     },
     {
-      "name": "@todo/REMOVE-DEAD-CODE/PROGRESS.md",
-      "size": 637,
-      "hash": "sha256:7499317d1af7"
+      "name": "@todo/DOCS-CLEANUP/PROGRESS.md",
+      "size": 995,
+      "hash": "sha256:ee9ac4dc7432"
     },
     {
       "name": "@todo/FUTURE/PLAN.md",
-      "size": 4816,
-      "hash": "sha256:ecf6357a6f3b"
+      "size": 5595,
+      "hash": "sha256:f0ecf3e438a7"
     },
     {
       "name": "@todo/SCORING-ALGORITHM/PLAN.md",
@@ -69,6 +70,16 @@
       "hash": "sha256:43ca6a49bd10"
     },
     {
+      "name": "@todo/REMOVE-DEAD-CODE/PLAN.md",
+      "size": 1382,
+      "hash": "sha256:e52ff1467613"
+    },
+    {
+      "name": "@todo/REMOVE-DEAD-CODE/PROGRESS.md",
+      "size": 637,
+      "hash": "sha256:7499317d1af7"
+    },
+    {
       "name": "@todo/SPLIT-PROMPT-BUILDER/PLAN.md",
       "size": 2883,
       "hash": "sha256:cc7f0de0429f"
@@ -89,16 +100,6 @@
       "hash": "sha256:5662c26afebf"
     },
     {
-      "name": "@todo/UV-LOCK-FILE/PLAN.md",
-      "size": 2164,
-      "hash": "sha256:0666d83872b1"
-    },
-    {
-      "name": "@todo/UV-LOCK-FILE/PROGRESS.md",
-      "size": 821,
-      "hash": "sha256:6661d984ad1c"
-    },
-    {
       "name": "@todo/TOKEN-MANAGER/PLAN.md",
       "size": 5280,
       "hash": "sha256:a0ffaf6e23d9"
@@ -107,6 +108,16 @@
       "name": "@todo/TOKEN-MANAGER/PROGRESS.md",
       "size": 1477,
       "hash": "sha256:8ca6babcda12"
+    },
+    {
+      "name": "@todo/UV-LOCK-FILE/PLAN.md",
+      "size": 2164,
+      "hash": "sha256:0666d83872b1"
+    },
+    {
+      "name": "@todo/UV-LOCK-FILE/PROGRESS.md",
+      "size": 821,
+      "hash": "sha256:6661d984ad1c"
     },
     {
       "name": "@todo/VSCODE-REFACTOR/PLAN.md",
@@ -119,6 +130,6 @@
       "hash": "sha256:411314f1f5be"
     }
   ],
-  "totalSize": 63497,
+  "totalSize": 68123,
   "compressed": false
 }

@@ -122,6 +122,22 @@ Extend `TokenManager` and `AIClientInterface` to support providers beyond Claude
 
 ---
 
+### 6. Tree-sitter AST-based Chunking
+
+Replace LangChain text-splitters with tree-sitter for AST-aware code chunking.
+
+- Current chunking uses regex-based separators per language (configured in `languages.yaml`)
+- Tree-sitter provides actual AST parsing — chunks at function/class/method boundaries instead of line-count heuristics
+- Benefits: better semantic boundaries, no splitting mid-function, language-aware structure
+- Requires: `tree-sitter` Python bindings + language grammars (one per supported language)
+- Risk: adds native dependency complexity (compiled grammars per platform)
+- Incremental approach: keep LangChain as fallback for unsupported languages
+
+**Estimated effort:** 3-4 weeks
+**Expected impact:** Significantly better chunk quality for code files
+
+---
+
 ## Priority Guidance
 
 When picking the next item from this roadmap:

@@ -61,8 +61,9 @@ Recommended execution order (top to bottom). Dependencies noted in last column.
 | 8 | `@todo/CI-CD-HOOKS/` | Not started | High | **After #6, #7** — CI pipeline runs tests (needs #7) with locked deps (needs #6) |
 | 9 | `@todo/CONFIG-REFACTOR/` | Not started | Medium | **After TESTING** — resolve circular deps, add singleton resets, config validation. Needs tests to verify safely |
 | 10 | `@todo/VSCODE-REFACTOR/` | Not started | Low | Independent — split ChatViewProvider god class into focused services. Separate sub-project |
+| 11 | `@todo/DOCS-CLEANUP/` | Not started | Low | Independent — fix broken doc refs, package name inconsistency, stub commands, tighten deps |
 
-**Future:** `@todo/FUTURE/PLAN.md` — roadmap items (Smart Query Processing, File Retrieval Intelligence, Multilingual Framework, Query Domain Unification, Additional Providers). Not scheduled until current backlog is clear.
+**Future:** `@todo/FUTURE/PLAN.md` — roadmap items (Smart Query Processing, File Retrieval Intelligence, Multilingual Framework, Query Domain Unification, Additional Providers, Tree-sitter Chunking). Not scheduled until current backlog is clear.
 
 **Dependency graph:**
 ```
@@ -74,6 +75,7 @@ Recommended execution order (top to bottom). Dependencies noted in last column.
 #6 UV-LOCK-FILE ─────────────────┘
 
 #10 VSCODE-REFACTOR (independent, separate sub-project)
+#11 DOCS-CLEANUP (independent, anytime)
 ```
 
 ## Known Pitfalls
