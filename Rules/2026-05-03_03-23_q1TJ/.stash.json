@@ -2,15 +2,20 @@
   "id": "2026-05-03_03-23_q1TJ",
   "project": "Rules",
   "timestamp": "2026-05-03T03:23:13.156Z",
-  "updatedAt": "2026-05-11T23:31:31.290Z",
+  "updatedAt": "2026-05-26T02:32:00.891Z",
   "message": "Global Cline Rules",
   "tags": [],
-  "user": "gabmule@MacBook-Pro-de-Gabriel-Mule.local",
+  "user": "gab@Macmini",
   "files": [
     {
       "name": "adr_discipline.md",
       "size": 1448,
       "hash": "sha256:08c7030d5f18"
+    },
+    {
+      "name": "commit_date_override.md",
+      "size": 1813,
+      "hash": "sha256:82c4ac42b09c"
     },
     {
       "name": "context_management.md",
@@ -23,16 +28,16 @@
       "hash": "sha256:d8c16bbc5919"
     },
     {
+      "name": "do_not_commit.md",
+      "size": 93,
+      "hash": "sha256:d991eba151b1"
+    },
+    {
       "name": "karpathy_behavioral_guidelines.md",
       "size": 2637,
       "hash": "sha256:2e24db6271c1"
-    },
-    {
-      "name": "pstash_use.md",
-      "size": 2519,
-      "hash": "sha256:5b81fe968296"
     }
   ],
-  "totalSize": 12180,
+  "totalSize": 11567,
   "compressed": false
 }
