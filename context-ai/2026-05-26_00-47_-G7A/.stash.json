@@ -2,17 +2,17 @@
   "id": "2026-05-26_00-47_-G7A",
   "project": "context-ai",
   "timestamp": "2026-05-26T00:47:13.531Z",
-  "updatedAt": "2026-05-26T01:14:21.241Z",
+  "updatedAt": "2026-05-26T02:31:00.741Z",
   "message": "todo context ai files",
   "tags": [],
   "branch": "main",
-  "commit": "f042ea45d4c6cdaaf0f9f10efbec38bc414ecc68",
+  "commit": "14660ae1d4860523c0ca5dd37db62405662a104a",
   "user": "gab@Macmini",
   "files": [
     {
       "name": "@todo/CONTEXT.md",
-      "size": 5346,
-      "hash": "sha256:762c312e1374"
+      "size": 7087,
+      "hash": "sha256:c44008e88405"
     },
     {
       "name": "@todo/CI-CD-HOOKS/PLAN.md",
@@ -35,6 +35,16 @@
       "hash": "sha256:bee7ca1597d6"
     },
     {
+      "name": "@todo/DI-REFACTOR/PLAN.md",
+      "size": 3212,
+      "hash": "sha256:3706a912d464"
+    },
+    {
+      "name": "@todo/DI-REFACTOR/PROGRESS.md",
+      "size": 1043,
+      "hash": "sha256:2a17213b1425"
+    },
+    {
       "name": "@todo/DOCS-CLEANUP/PLAN.md",
       "size": 2644,
       "hash": "sha256:e96e24f77102"
@@ -50,24 +60,14 @@
       "hash": "sha256:f0ecf3e438a7"
     },
     {
-      "name": "@todo/SCORING-ALGORITHM/PLAN.md",
-      "size": 6557,
-      "hash": "sha256:2b21ff36d66d"
+      "name": "@todo/DYNAMIC-TOKEN-ALLOCATION/PLAN.md",
+      "size": 3538,
+      "hash": "sha256:ab65dd0275cb"
     },
     {
-      "name": "@todo/SCORING-ALGORITHM/PROGRESS.md",
-      "size": 1506,
-      "hash": "sha256:ee370c6523bd"
-    },
-    {
-      "name": "@todo/SPLIT-AI-SERVICE/PLAN.md",
-      "size": 3332,
-      "hash": "sha256:2cdc7fce524d"
-    },
-    {
-      "name": "@todo/SPLIT-AI-SERVICE/PROGRESS.md",
-      "size": 1163,
-      "hash": "sha256:43ca6a49bd10"
+      "name": "@todo/DYNAMIC-TOKEN-ALLOCATION/PROGRESS.md",
+      "size": 972,
+      "hash": "sha256:896edcda78a5"
     },
     {
       "name": "@todo/REMOVE-DEAD-CODE/PLAN.md",
@@ -78,6 +78,16 @@
       "name": "@todo/REMOVE-DEAD-CODE/PROGRESS.md",
       "size": 637,
       "hash": "sha256:7499317d1af7"
+    },
+    {
+      "name": "@todo/SCORING-ALGORITHM/PLAN.md",
+      "size": 6557,
+      "hash": "sha256:2b21ff36d66d"
+    },
+    {
+      "name": "@todo/SCORING-ALGORITHM/PROGRESS.md",
+      "size": 1506,
+      "hash": "sha256:ee370c6523bd"
     },
     {
       "name": "@todo/SPLIT-PROMPT-BUILDER/PLAN.md",
@@ -100,14 +110,24 @@
       "hash": "sha256:5662c26afebf"
     },
     {
+      "name": "@todo/SPLIT-AI-SERVICE/PLAN.md",
+      "size": 3332,
+      "hash": "sha256:2cdc7fce524d"
+    },
+    {
+      "name": "@todo/SPLIT-AI-SERVICE/PROGRESS.md",
+      "size": 1163,
+      "hash": "sha256:43ca6a49bd10"
+    },
+    {
       "name": "@todo/TOKEN-MANAGER/PLAN.md",
       "size": 5280,
       "hash": "sha256:a0ffaf6e23d9"
     },
     {
       "name": "@todo/TOKEN-MANAGER/PROGRESS.md",
-      "size": 1477,
-      "hash": "sha256:8ca6babcda12"
+      "size": 2253,
+      "hash": "sha256:8ae16c6c26ce"
     },
     {
       "name": "@todo/UV-LOCK-FILE/PLAN.md",
@@ -130,6 +150,6 @@
       "hash": "sha256:411314f1f5be"
     }
   ],
-  "totalSize": 68123,
+  "totalSize": 79405,
   "compressed": false
 }
