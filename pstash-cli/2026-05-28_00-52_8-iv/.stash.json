@@ -1,0 +1,34 @@
+{
+  "id": "2026-05-28_00-52_8-iv",
+  "project": "pstash-cli",
+  "timestamp": "2026-05-28T00:52:07.371Z",
+  "message": "todo docs",
+  "tags": [],
+  "branch": "master",
+  "commit": "03d866916e1bff17e2872b2e6df75bf3e84f9ce2",
+  "user": "gab@Macmini",
+  "files": [
+    {
+      "name": "@todo/CONTEXT.md",
+      "size": 4991,
+      "hash": "sha256:4786828cc668"
+    },
+    {
+      "name": "@todo/PROJECT_SPECIFICATION.md",
+      "size": 46591,
+      "hash": "sha256:4170c9f14944"
+    },
+    {
+      "name": "@todo/CI-CD/PLAN.md",
+      "size": 5339,
+      "hash": "sha256:62be703c609a"
+    },
+    {
+      "name": "@todo/CI-CD/PROGRESS.md",
+      "size": 1219,
+      "hash": "sha256:1c8b75e6c924"
+    }
+  ],
+  "totalSize": 58140,
+  "compressed": false
+}
