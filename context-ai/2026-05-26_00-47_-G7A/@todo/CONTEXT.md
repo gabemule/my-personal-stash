@@ -64,6 +64,7 @@ Recommended execution order (top to bottom). Dependencies noted in last column.
 | 11 | `@todo/DYNAMIC-TOKEN-ALLOCATION/` | Not started | Medium | Replace fixed 65/35 token split with greedy fill. See ADR-012 |
 | 12 | `@todo/VSCODE-REFACTOR/` | Not started | Low | Independent — split ChatViewProvider god class. Must move to separate repo before publication (ADR-014) |
 | 13 | `@todo/DOCS-CLEANUP/` | Not started | Low | Independent — fix broken doc refs, package name inconsistency, stub commands, tighten deps |
+| 14 | `@todo/FASTAPI-API/` | Not started | High | **After #10 DI-REFACTOR** — FastAPI REST layer over services/. SSE streaming, auth, CORS. See ADR-002 |
 
 **Future:** `@todo/FUTURE/PLAN.md` — roadmap items (Smart Query Processing, File Retrieval Intelligence, Multilingual Framework, Query Domain Unification, Additional Providers, Tree-sitter Chunking). Not scheduled until current backlog is clear.
 
@@ -72,7 +73,7 @@ Recommended execution order (top to bottom). Dependencies noted in last column.
 #1 REMOVE-DEAD-CODE ──┐
 #2 TOKEN-MANAGER ✅    │  (complete)
 #3 SCORING-ALGORITHM ──┤
-#4 SPLIT-AI-SERVICE ───┼──→ #7 TESTING ──→ #8 CI-CD-HOOKS ──→ #9 CONFIG-REFACTOR ──→ #10 DI-REFACTOR
+#4 SPLIT-AI-SERVICE ───┼──→ #7 TESTING ──→ #8 CI-CD-HOOKS ──→ #9 CONFIG-REFACTOR ──→ #10 DI-REFACTOR ──→ #14 FASTAPI-API
 #5 SPLIT-PROMPT-BUILDER┘         ↑
 #6 UV-LOCK-FILE ─────────────────┘
 
