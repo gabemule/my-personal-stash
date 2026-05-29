@@ -108,6 +108,7 @@ Active @todo items in planned execution order:
 | 1 | `STATE_MANAGEMENT_REFACTOR` | 🟡 ~3h | Not started | None |
 | 2 | `API_KEYS_PROJECT_SCOPE` | 🟡 ~2h | Not started | None |
 | 3 | `VARIABLE_VALIDATION` | 🔴 ~8h | Not started | None (benefits from #1 for Phase 2 UI) |
+| 4 | `SHADCN-MIGRATION` | 🔴 ~10-13h | Not started | None (benefits all future UI work) |
 
 Completed (archived): `RENAME_DELETED_AT`, `PUBLISHED_AT`, `URL_DRIVEN_LOADING`, `CACHE`, `ZOD-SSOT`, `TYPE_SAFETY_REFINEMENTS`, `APP_BUILDER_REORGANIZING`
 
