@@ -1,10 +1,14 @@
-# 02 - Cerimônias e Cadência
-
 ## Visão Geral
 
 O squad trabalha em **sprints de 2 semanas** com um conjunto de cerimônias que garantem alinhamento, planejamento e melhoria contínua.
 
 > **Nota:** A cadência específica (dia da semana, horário) varia por squad. Este documento descreve os ritos e sua frequência, não o calendário fixo.
+
+### Princípios de Agendamento
+
+- Priorizar agendar ritos no **começo ou final do dia** ou próximo a **momentos de transição** (ex: antes/depois do almoço)
+- Preservar o **período da tarde para foco em desenvolvimento** — sem reuniões recorrentes nesse horário
+- Blocos longos de foco ininterrupto são essenciais para trabalho técnico de qualidade
 
 ---
 

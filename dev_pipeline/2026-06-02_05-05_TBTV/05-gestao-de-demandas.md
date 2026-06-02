@@ -1,5 +1,3 @@
-# 05 - Gestão de Demandas
-
 ## Tipos de Card
 
 O board utiliza três tipos principais de card para organizar o trabalho:

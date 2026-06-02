@@ -2,44 +2,45 @@
   "id": "2026-06-02_05-05_TBTV",
   "project": "dev_pipeline",
   "timestamp": "2026-06-02T05:05:24.497Z",
+  "updatedAt": "2026-06-02T05:14:52.320Z",
   "message": "dev_pipeline docs",
   "tags": [],
   "user": "gab@Macmini",
   "files": [
     {
       "name": "01-estrutura-do-squad.md",
-      "size": 6086,
-      "hash": "sha256:a2087bd875d8"
+      "size": 6059,
+      "hash": "sha256:5643bb5e817d"
     },
     {
       "name": "02-cerimonias-e-cadencia.md",
-      "size": 4758,
-      "hash": "sha256:8597c794be33"
+      "size": 5087,
+      "hash": "sha256:31227d1a5fd8"
     },
     {
       "name": "03-fluxo-de-trabalho.md",
-      "size": 8307,
-      "hash": "sha256:59662a24978f"
+      "size": 8281,
+      "hash": "sha256:f0fa1de4f712"
     },
     {
       "name": "04-desenvolvimento-e-qualidade.md",
-      "size": 6010,
-      "hash": "sha256:b7661899a184"
+      "size": 5974,
+      "hash": "sha256:0e419bd3a90e"
     },
     {
       "name": "05-gestao-de-demandas.md",
-      "size": 5626,
-      "hash": "sha256:eed155af1b5a"
+      "size": 5598,
+      "hash": "sha256:50153f6353ff"
     },
     {
       "name": "06-capacitacao-e-desenvolvimento.md",
-      "size": 7990,
-      "hash": "sha256:6c1b4d69c813"
+      "size": 7950,
+      "hash": "sha256:f062e88d1c97"
     },
     {
       "name": "README.md",
-      "size": 1359,
-      "hash": "sha256:6af617e6fec9"
+      "size": 1311,
+      "hash": "sha256:1ee0b689f38f"
     },
     {
       "name": ".obsidian/app.json",
@@ -62,6 +63,6 @@
       "hash": "sha256:2016d969d29d"
     }
   ],
-  "totalSize": 46242,
+  "totalSize": 46366,
   "compressed": false
 }

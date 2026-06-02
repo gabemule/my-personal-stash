@@ -1,5 +1,3 @@
-# Esteira de Desenvolvimento — Guia do Squad
-
 > Documentação de referência para os processos, estrutura e dinâmica de trabalho dos squads.
 > Este guia define a forma de trabalho padrão e serve como base para onboarding e alinhamento contínuo.
 

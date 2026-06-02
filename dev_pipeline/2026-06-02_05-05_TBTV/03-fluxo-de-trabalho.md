@@ -1,5 +1,3 @@
-# 03 - Fluxo de Trabalho
-
 ## Visão Geral
 
 O board do squad reflete o ciclo de vida completo de uma demanda, da concepção à produção. Cada coluna representa uma etapa com critérios claros de entrada e saída.

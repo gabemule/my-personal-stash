@@ -1,5 +1,3 @@
-# 04 - Desenvolvimento e Qualidade
-
 ## Branching Strategy
 
 O squad utiliza **feature branch** como estratégia de versionamento.

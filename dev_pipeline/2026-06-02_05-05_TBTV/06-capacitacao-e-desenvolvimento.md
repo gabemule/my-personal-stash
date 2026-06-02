@@ -1,5 +1,3 @@
-# 06 - Capacitação e Desenvolvimento
-
 ## Filosofia
 
 O squad investe deliberadamente na formação de **Software Engineers com especialidade profunda e amplitude progressiva**. O objetivo não é eliminar especialidades, mas construir um time onde cada SE consiga contribuir além da sua área principal quando necessário.

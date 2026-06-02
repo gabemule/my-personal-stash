@@ -1,5 +1,3 @@
-# 01 - Estrutura do Squad
-
 ## Composição Padrão
 
 O squad é composto por:
